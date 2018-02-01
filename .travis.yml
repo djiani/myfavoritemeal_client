@@ -7,6 +7,9 @@ language: node_js
    - npm test
  env:
    - CI=true
+ branches:
+    only:
+      - test
 
  before_deploy:
    - npm install netlify-cli -g
@@ -18,3 +21,5 @@ language: node_js
    skip_cleanup: true
    on:
      branch: master
+
+  

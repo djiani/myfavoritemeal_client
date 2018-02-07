@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
-/*
+
 //import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
 
@@ -9,7 +9,7 @@ import {required, nonEmpty} from '../validators';
 export class LoginForm extends React.Component {
     onSubmit(values) {
         //return this.props.dispatch(login(values.username, values.password));
-        return 'values';
+        console.log(values);
     }
 
     render() {
@@ -24,10 +24,9 @@ export class LoginForm extends React.Component {
         return (
             <form
                 className="login-form"
-                //onSubmit={this.props.handleSubmit(values =>
-                 //   this.onSubmit(values)
-                //)}
-                >
+                onSubmit={this.props.handleSubmit(values =>
+                    this.onSubmit(values)
+                )} >
                 {error}
                 <label htmlFor="username">Username</label>
                 <Field
@@ -57,4 +56,3 @@ export default reduxForm({
     form: 'login'
     //onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm);
-*/

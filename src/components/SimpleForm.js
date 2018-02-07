@@ -1,10 +1,16 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-const SimpleForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+export class SimpleForm extends React.Component {
+  onSubmit(values){
+    console.log(values);
+  }
+
+  //const {pristine, reset, submitting } = props;
+  render(){
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={this.props.handleSubmit(values =>
+      this.onSubmit(values))}>
       <div>
         <label>First Name</label>
         <div>
@@ -82,13 +88,14 @@ const SimpleForm = props => {
         </div>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        <button type="submit" disabled={this.props.pristine || this.props.submitting}>Submit</button>
+        <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset}>
           Clear Values
         </button>
       </div>
     </form>
   );
+}
 };
 
 export default reduxForm({

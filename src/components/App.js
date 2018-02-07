@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Header_Section, Welcome_page, Description_page, 
   HowToUse_page, SignInUp_page, Footer_page} from './landing_page';
 

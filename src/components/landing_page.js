@@ -1,7 +1,7 @@
 import React from 'react';
 import './landing_page.css';
 import {MenuBar} from './menuBar';
-//import {LoginForm} from './login_form';
+import LoginForm from './login_form';
 import SimpleForm from "./SimpleForm";
 
 
@@ -42,7 +42,7 @@ export function SignInUp_page(props){
   return(
     <div className="signInUp_page section"> 
     <h1>Sign in </h1>
-      <SimpleForm />
+      <LoginForm />
     </div>)
 }
 

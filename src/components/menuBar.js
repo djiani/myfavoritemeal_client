@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Menu, {SubMenu, Item as MenuItem, Divider} from 'rc-menu';
+import Menu, {SubMenu, Item as MenuItem} from 'rc-menu';
 import 'rc-menu/assets/index.css';
 //import animate from 'css-animation';
 import './menuBar.css';

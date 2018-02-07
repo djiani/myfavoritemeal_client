@@ -20,10 +20,6 @@ class App extends Component {
           <SignInUp_page />
           <Footer_page />
         </div>
-
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }

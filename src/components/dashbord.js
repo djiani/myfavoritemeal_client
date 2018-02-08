@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export class DashBoard extends React.Component{
+export class Dashboard extends React.Component{
   
 
   render(){

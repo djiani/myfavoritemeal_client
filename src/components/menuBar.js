@@ -5,8 +5,6 @@ import 'rc-menu/assets/index.css';
 import './menuBar.css';
 
 
-
-
 function handleSelect(info) {
   console.log(info);
   console.log(`selected ${info.key}`);
@@ -55,16 +53,17 @@ function onOpenChange(value) {
   console.log('onOpenChange', value);
 }
 
-const commonMenu = (<Menu onSelect={handleSelect} onOpenChange={onOpenChange}>
-  
-  <MenuItem key="1">login</MenuItem>
-  <MenuItem key="2">register</MenuItem>
-  <MenuItem key="3"></MenuItem>
-  <SubMenu title={<span>Account</span>} key="5">
-    <MenuItem key="1-1">profile</MenuItem>
-    <MenuItem key="1-2">log Out</MenuItem>
-  </SubMenu>
-</Menu>);
+const commonMenu = (
+  <Menu onSelect={handleSelect} onOpenChange={onOpenChange}>    
+    <MenuItem key="1">login</MenuItem>
+    <MenuItem key="2">register</MenuItem>
+    <MenuItem key="3"></MenuItem>
+    <SubMenu title={<span>Account</span>} key="5">
+      <MenuItem key="1-1">profile</MenuItem>
+      <MenuItem key="1-2">log Out</MenuItem>
+    </SubMenu>
+  </Menu>
+);
 
 const horizontalMenu2 = React.cloneElement(commonMenu, {
     mode: 'horizontal',
@@ -72,9 +71,8 @@ const horizontalMenu2 = React.cloneElement(commonMenu, {
     triggerSubMenuAction: 'click',
   });
 
-export function MenuBar(props){
+export function MenuBar(props) {
   return (
     <div className="horizontal_menu">{horizontalMenu2}</div>
-    );
-
+  );
 }

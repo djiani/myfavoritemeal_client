@@ -7,7 +7,7 @@ export class SimpleForm extends React.Component {
   }
 
   //const {pristine, reset, submitting } = props;
-  render(){
+  render() {
   return (
     <form onSubmit={this.props.handleSubmit(values =>
       this.onSubmit(values))}>

@@ -1,32 +1,67 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Route, withRouter} from 'react-router-dom';
 import LandingPage from './landing_page';
-import Dashboard from './dashbord';  //home page
+import Dashboard from './dashboard';  //home page
 import RegistrationPage from './registration_page';
 
-import {Header_Section} from './landing_page2';
+import {HeaderSection} from './landing_page2';
+import {refreshAuthToken} from '../actions/auth';
 
 import './App.css';
 
-class App extends Component {
+export class App extends React.Component {
+  componentWillReceiveProps(nextProps) {
+        if (nextProps.loggedIn && !this.props.loggedIn) {
+            // When we are logged in, refresh the auth token periodically
+            this.startPeriodicRefresh();
+        } else if (!nextProps.loggedIn && this.props.loggedIn) {
+            // Stop refreshing when we log out
+            this.stopPeriodicRefresh();
+        }
+    }
+
+    componentWillUnmount() {
+        this.stopPeriodicRefresh();
+    }
+
+    startPeriodicRefresh() {
+        this.refreshInterval = setInterval(
+            () => this.props.dispatch(refreshAuthToken()),
+            60 * 60 * 1000 // One hour
+        );
+    }
+
+    stopPeriodicRefresh() {
+        if (!this.refreshInterval) {
+            return;
+        }
+
+        clearInterval(this.refreshInterval);
+    }
   render() {
     return (
-      <Router>
         <div className="App">
           <header className="App-header">
-            <Header_Section />
+            <HeaderSection />
             <h1 className="App-title">My Favorite Meals</h1>
           </header>
           <div className="main">
-            <route exact path="/" component={LandingPage} />
-            <route exact path="/home" component={Dashboard} />
-            <route exact path='register' component={RegistrationPage} />
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/home" component={Dashboard} />
+            <Route exact path='/register' component={RegistrationPage} />
           </div>
           
         </div>
-      </Router>
+     
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    hasAuthToken: state.auth.authToken !== null,
+    loggedIn: state.auth.currentUser !== null
+});
+
+// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
+export default withRouter(connect(mapStateToProps)(App));

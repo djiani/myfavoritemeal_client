@@ -1,12 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-
+import MealList from './mealList';
+import SearchSection from './searchSection'
+import ViewRecipes from './viewRecipes';
 export default class DashBoard extends React.Component{
   
   render() {
     return (
       <div> 
-      
+        <SearchSection />
+        <MealList />
+        <ViewRecipes />
       </div>
     )
   }

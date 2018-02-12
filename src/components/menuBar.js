@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu, {SubMenu, Item as MenuItem} from 'rc-menu';
+import {Redirect} from 'react-router-dom';
 import 'rc-menu/assets/index.css';
 //import animate from 'css-animation';
 import './menuBar.css';
@@ -8,46 +9,23 @@ import './menuBar.css';
 function handleSelect(info) {
   console.log(info);
   console.log(`selected ${info.key}`);
+  if(info.key === "1"){
+    console.log('login has been clicked');
+    
+     <Redirect to="/" />
+  }
+  else if (info.key === "2"){
+   
+   console.log('register has been clicked');
+     <Redirect to ="/register" />
+  }
+
+  else if(info.key === "3"){
+    console.log('account has been clicked');
+  }
+
 }
 
-/*const animation = {
-  enter(node, done) {
-    let height;
-    return animate(node, 'rc-menu-collapse', {
-      start() {
-        height = node.offsetHeight;
-        node.style.height = 0;
-      },
-      active() {
-        node.style.height = `${height}px`;
-      },
-      end() {
-        node.style.height = '';
-        done();
-      },
-    });
-  },
-
-appear() {
-    return this.enter.apply(this, arguments);
-  },
-
-  leave(node, done) {
-    return animate(node, 'rc-menu-collapse', {
-      start() {
-        node.style.height = `${node.offsetHeight}px`;
-      },
-      active() {
-        node.style.height = 0;
-      },
-      end() {
-        node.style.height = '';
-        done();
-      },
-    });
-  },
-};
-*/
 
 function onOpenChange(value) {
   console.log('onOpenChange', value);
@@ -57,8 +35,12 @@ const commonMenu = (
   <Menu onSelect={handleSelect} onOpenChange={onOpenChange}>    
     <MenuItem key="1">login</MenuItem>
     <MenuItem key="2">register</MenuItem>
-    <MenuItem key="3"></MenuItem>
-    <SubMenu title={<span>Account</span>} key="5">
+    <SubMenu className="myMeals" title={<span>MyMeals</span>} key="3">
+      <MenuItem key="3-1">addMeal</MenuItem>
+      <MenuItem key="3-2">ListMyMeal</MenuItem>
+    </SubMenu>
+    <MenuItem key="4"></MenuItem>
+    <SubMenu className="js-account" title={<span>Account</span>} key="5">
       <MenuItem key="1-1">profile</MenuItem>
       <MenuItem key="1-2">log Out</MenuItem>
     </SubMenu>

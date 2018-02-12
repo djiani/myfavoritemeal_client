@@ -4,3 +4,9 @@ export const addMeal = (name, mealIndex) => ({
   name, 
   mealIndex
 });
+
+export const FETCH_MEAL = 'FETCH_MEAL';
+export const fetchMeal = (meals) =>(
+{
+  type: FETCH_MEAL
+})

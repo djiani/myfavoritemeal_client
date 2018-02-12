@@ -1,0 +1,9 @@
+.category{
+  width: 50%;
+  margin:0 auto;
+  text-align: left;
+}
+
+/*checked={this.props.isCheckedBreakfast}
+      checked={this.props.isCheckedLunch}
+      checked={this.props.isCheckedDinner}*/

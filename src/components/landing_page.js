@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import {WelcomePage, DescriptionPage, 
   HowToUsePage, SignInUpPage, FooterPage} from './landing_page2';
 
 export function LandingPage(props) {
   if (props.loggedIn){
-    return <Redirect to ="/home" />
+     return <Redirect to ="/home" />
   }
 
   return (
@@ -16,6 +16,7 @@ export function LandingPage(props) {
       <DescriptionPage />
       <HowToUsePage />
       <SignInUpPage />
+      <FooterPage />
     </div>
   );
 }

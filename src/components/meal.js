@@ -1,12 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {viewsRecipes} from '../actions/meal';
 import './meal.css';
 
 
-export default class Meal extends React.Component{
-  viewRecipes(index){
-    
+export class Meal extends React.Component{
+
+  handleViewsRecipes(indexMeal, title){
+    this.props.dispatch(viewsRecipes(indexMeal, title));
   }
+
   render(){ 
+    console.log(this.props);
     return (
       <div className="meal">
         <div>
@@ -21,11 +26,14 @@ export default class Meal extends React.Component{
           </ul>
         </div>
         <div>
-          <button className="recipes_btn" onClick={(index)=>this.viewRecipes(index)} > view recipes</button>
+          <button className="recipes_btn" onClick={()=>this.handleViewsRecipes(this.props.indexMeal, 'viewsrecipes')} > view recipes</button>
         </div>
       </div>
     );
   }
 }
+
+
+export default connect()(Meal);
 
 

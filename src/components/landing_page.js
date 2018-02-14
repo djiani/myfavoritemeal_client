@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import {WelcomePage, DescriptionPage, 
-  HowToUsePage, SignInUpPage, FooterPage} from './landing_page2';
+  HowToUsePage, FooterPage} from './landing_page2';
 
 export function LandingPage(props) {
   if (props.loggedIn){
@@ -15,7 +15,6 @@ export function LandingPage(props) {
       <WelcomePage />
       <DescriptionPage />
       <HowToUsePage />
-      <SignInUpPage />
       <FooterPage />
     </div>
   );

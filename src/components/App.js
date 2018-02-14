@@ -4,8 +4,9 @@ import {Route, withRouter} from 'react-router-dom';
 import LandingPage from './landing_page';
 import Dashboard from './dashboard';  //home page
 import RegistrationPage from './registration_page';
+import LoginPage from './loginPage';
 
-import {HeaderSection} from './landing_page2';
+import {MainMenu} from './mainMenu';
 import {refreshAuthToken} from '../actions/auth';
 
 import './App.css';
@@ -43,13 +44,15 @@ export class App extends React.Component {
     return (
         <div className="App">
           <header className="App-header">
-            <HeaderSection />
-            <h1 className="App-title">My Favorite Meals</h1>
+            <MainMenu />
           </header>
           <div className="main">
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/home" component={Dashboard} />
             <Route exact path='/register' component={RegistrationPage} />
+            <Route exact path='/login' component={LoginPage} />
+            <Route exact path='/addmeal' component={RegistrationPage} />
+            <Route exact path='/profile' component={RegistrationPage} />
           </div>
           
         </div>

@@ -1,17 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './landing_page.css';
-import {MenuBar} from './menuBar';
 import LoginForm from './login_form';
 
 
-export function HeaderSection(props){
-  return (
-    <div className="Header_Section">
-      <MenuBar />
-    </div>
-  );
-}
 
 export function WelcomePage(props){
   return (
@@ -41,15 +33,7 @@ export function HowToUsePage(props){
   )
 }
 
-export function SignInUpPage(props){
-  return (
-    <div className="signInUp_page section"> 
-    <h1>Sign in </h1>
-      <LoginForm />
-      <Link to="/register">Register</Link>
-    </div>
-  )
-}
+
 
 export function FooterPage(props){
   return (

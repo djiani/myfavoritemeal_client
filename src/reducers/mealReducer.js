@@ -1,7 +1,10 @@
 import * as actions from  '../actions/meal';
-const IMG_URL_BASE= '/c/Users/djias/OneDrive/cours/web-dev/React/myfavoritemeal_client';
 
 const initialState = {
+  addmeal: false,
+  whatToLoad: '',
+  viewsrecipes: '',
+  indexMeal: 0,
   meals: [
     {
       name: 'Cherry Pork Tender Loin',
@@ -50,7 +53,26 @@ const initialState = {
 };
 
 export const  mealReducer= (state=initialState, action)=> {
+  if(action.type === actions.ADD_MEAL_FORM){
 
+    return Object.assign({}, state, {
+      addmeal:true,
+      viewsrecipes: false
+    })
+  }
+  if(action.type === actions.VIEWS_RECIPES){
+    return Object.assign({}, state, {
+      viewsrecipes: action.title,
+      addmeal: false,
+      indexMeal: action.indexMeal})
+  }
+
+  if(action.type === actions.WHAT_TO_LOAD){
+    console.log('text to load:'+ action.tobeloaded)
+    return Object.assign({}, state, {
+      whatToLoad: action.tobeloaded
+      })
+  }
 
   return state;
 }

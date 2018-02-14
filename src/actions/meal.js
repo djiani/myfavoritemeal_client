@@ -1,12 +1,17 @@
-export const ADD_MEAL = 'ADD_MEAL';
-export const addMeal = (name, mealIndex) => ({
-  type: ADD_MEAL, 
-  name, 
-  mealIndex
+export const ADD_MEAL_FORM = 'ADD_MEAL_FORM';
+export const addMealForm = () => ({
+  type: ADD_MEAL_FORM  
 });
 
-export const FETCH_MEAL = 'FETCH_MEAL';
-export const fetchMeal = (meals) =>(
-{
-  type: FETCH_MEAL
+export const VIEWS_RECIPES = 'VIEWS_MEAL';
+export const viewsRecipes = (indexMeal, title) =>({
+  type: VIEWS_RECIPES,
+  indexMeal,
+  title
+})
+
+export const WHAT_TO_LOAD = 'WHAT_TO_LOAD';
+export const whatToLoad = (tobeloaded) =>({
+  type: WHAT_TO_LOAD,
+  tobeloaded
 })

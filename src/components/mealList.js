@@ -8,7 +8,7 @@ import './mealList.css'
 export function MealList(props){
 
   const listMeal = props.meals.map((meal, index) => (
-    <Meal meal= {meal} key={index} />)
+    <Meal meal= {meal} indexMeal={index} key={index}  />)
   );
 
   return (

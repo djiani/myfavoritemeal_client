@@ -1,12 +1,13 @@
 import React from 'react';
 
-export default function ViewRecipes(props){
+export default function ViewsRecipes(props){
+  console.log(props);
 
   return(
     <div>
       <div>
         <div className="img_block">
-          //<img src={props.meal.image_url} alt={props.meal.name} />
+           <img src={props.meal.image_url} alt="test" /> 
           <h3> ingredients</h3>
         </div>
         <div  className="description">

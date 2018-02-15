@@ -47,31 +47,31 @@ const initialState = {
        'Pour chili into a 9" × 13" baking dish. Top with cornbread mixture and sprinkle liberally with Cheddar cheese. Bake for 30 minutes or until crust is golden.'],
       owner: 'userName',
       image_url: 'https://www.kroger.com/asset/594046a8bae8a25175396ec2?data=1'
-
     }
   ]
 };
 
-export const  mealReducer= (state=initialState, action)=> {
+export const mealReducer = (state=initialState, action) => {
   if(action.type === actions.ADD_MEAL_FORM){
-
     return Object.assign({}, state, {
-      addmeal:true,
+      addmeal: true,
       viewsrecipes: false
     })
   }
+
   if(action.type === actions.VIEWS_RECIPES){
     return Object.assign({}, state, {
       viewsrecipes: action.title,
       addmeal: false,
-      indexMeal: action.indexMeal})
+      indexMeal: action.indexMeal
+    })
   }
 
   if(action.type === actions.WHAT_TO_LOAD){
     console.log('text to load:'+ action.tobeloaded)
     return Object.assign({}, state, {
       whatToLoad: action.tobeloaded
-      })
+    })
   }
 
   return state;

@@ -29,23 +29,22 @@ export class MainMenu extends React.Component{
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="#" >
-           <Link to='addmeal'>AddMeal</Link>
+          <NavItem eventKey={1} href="addmeal" >
+           AddMeal
           </NavItem>
           <NavItem eventKey={2} href="#" >
             MyMeals
           </NavItem>
           <NavDropdown eventKey={3} title="MyPreferences" id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1}>action</MenuItem>
-            
+            <MenuItem eventKey={3.1}>action</MenuItem>          
           </NavDropdown>
         </Nav>
         <Nav pullRight >
-          <NavItem eventKey={1} href="#" >
-            <Link to='/login'> Sign In</Link>
+          <NavItem eventKey={1} href="/login" >
+            Sign In
           </NavItem>
-          <NavItem eventKey={2} href="#">
-            <Link to='/register/'> Register</Link>
+          <NavItem eventKey={2} href="/register">
+            Register
           </NavItem>
           <NavDropdown eventKey={3} title="Account" id="basic-nav-dropdown">
             <MenuItem eventKey={3.1}>profile</MenuItem>

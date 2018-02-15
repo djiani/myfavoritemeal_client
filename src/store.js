@@ -7,7 +7,6 @@ import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import { mealReducer } from './reducers/mealReducer'
 
-
 const store = createStore (
   combineReducers( {
     form: reduxFormReducer, // mounted under "form"
@@ -15,8 +14,8 @@ const store = createStore (
     protectedData: protectedDataReducer,
     meal: mealReducer
   }),
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
 );
 
 // Hydrate the authToken from localStorage if it exist
@@ -26,4 +25,5 @@ if (authToken) {
     store.dispatch(setAuthToken(token));
     store.dispatch(refreshAuthToken());
 }
+
 export default store;

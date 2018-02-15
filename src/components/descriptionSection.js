@@ -4,7 +4,7 @@ export default function DescriptionSection(props){
   return (
     <div className="descriptionSection">
       <div className='image_block'>
-        <img src="http://www.mealpreppies.com/wp-content/uploads/2015/09/meal-prep-sunday.jpg" atl="" className='image_desc'/>
+        <img src="http://www.mealpreppies.com/wp-content/uploads/2015/09/meal-prep-sunday.jpg" alt="logo" className='image_desc'/>
       </div>
       <div className='description_text'> 
         <h1> Experience My Favorite Meal</h1>

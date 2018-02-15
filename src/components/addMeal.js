@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
-
+import {addMealForm} from '../actions/meal';
 import {required, nonEmpty} from '../validators';
 import './addMeal.css';
 
@@ -10,15 +10,17 @@ export class AddMeal extends React.Component {
   handleChange(value){
     console.log(value);
   }
+
   onSubmit(values) {
       //return this.props.dispatch(login(values.username, values.password));
-      console.log(values);
+    this.props.dispatch(addMealForm(values));
+    console.log(values);
   }
 
   render(){
     return(
 
-      <form className="addMeal-form" >
+      <form className="addMeal-form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div className="left_block">
           <div>
             <label htmlFor="name">recipes Name </label>
@@ -26,7 +28,7 @@ export class AddMeal extends React.Component {
           </div>
           <div>
             <label htmlFor="name">Description </label><br/>
-            <textarea value="short description on the meal here" /> 
+            <textarea value="short description on the meal here" onChange={value => this.handleChange(value)} /> 
           </div>
           <div className="radio-group">
             <label htmlFor="difficulty">Difficulty </label>

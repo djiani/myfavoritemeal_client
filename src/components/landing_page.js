@@ -2,8 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
-import {WelcomePage, DescriptionPage, 
-  HowToUsePage, FooterPage} from './landing_page2';
+
+import WelcomeSection from './welcomeSection';
+import DescriptionSection from './descriptionSection';
+import FooterSection from './footerSection';
 
 export function LandingPage(props) {
   if (props.loggedIn){
@@ -12,10 +14,9 @@ export function LandingPage(props) {
 
   return (
     <div>
-      <WelcomePage />
-      <DescriptionPage />
-      <HowToUsePage />
-      <FooterPage />
+      <WelcomeSection />
+      <DescriptionSection />
+      <FooterSection />
     </div>
   );
 }

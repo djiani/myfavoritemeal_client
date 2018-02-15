@@ -42,7 +42,7 @@ export class MainMenu extends React.Component{
         </Nav>
         <Nav pullRight >
           <NavItem eventKey={1} href="#" >
-            <Link to='/register/'> Sign In</Link>
+            <Link to='/login'> Sign In</Link>
           </NavItem>
           <NavItem eventKey={2} href="#">
             <Link to='/register/'> Register</Link>

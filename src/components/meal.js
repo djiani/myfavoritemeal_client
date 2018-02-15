@@ -21,8 +21,10 @@ export class Meal extends React.Component{
         <div>
           <h4 className="meal_name"> {this.props.meal.name} </h4>
           <ul>
-            <li> {this.props.meal.hands_on} minutes</li>
+            <li> Difficulty: {this.props.meal.difficulty}</li>
+            <li> Time: {this.props.meal.hands_on} minutes</li>
             <li> posted by: {this.props.meal.owner}</li>
+
           </ul>
         </div>
         <div>

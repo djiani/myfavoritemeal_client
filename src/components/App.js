@@ -5,6 +5,7 @@ import LandingPage from './landing_page';
 import Dashboard from './dashboard';  //home page
 import RegistrationPage from './registration_page';
 import LoginPage from './loginPage';
+import AddMealPage from './addMealPage';
 
 import {MainMenu} from './mainMenu';
 import {refreshAuthToken} from '../actions/auth';
@@ -51,7 +52,7 @@ export class App extends React.Component {
             <Route exact path="/home" component={Dashboard} />
             <Route exact path='/register' component={RegistrationPage} />
             <Route exact path='/login' component={LoginPage} />
-            <Route exact path='/addmeal' component={RegistrationPage} />
+            <Route exact path='/addmeal' component={AddMealPage} />
             <Route exact path='/profile' component={RegistrationPage} />
           </div>
           

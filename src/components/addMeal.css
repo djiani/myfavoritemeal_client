@@ -1,0 +1,24 @@
+.addMeal-form{
+  width: 100%;
+  margin:0 auto;
+  border: 1px solid black;
+  height: auto;
+}
+
+.submit_block{
+  width: 100%;
+  margin: 10px;
+}
+
+.radio{
+  display: inline;
+}
+
+button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ingredients_block, .direction_block{
+  margin-top: 10px;
+}

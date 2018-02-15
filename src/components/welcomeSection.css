@@ -1,0 +1,12 @@
+.welcomeSection{
+  margin-top:-20px;
+  width: 100%;
+  height: 500px;
+  background-image: url('https://c1.staticflickr.com/5/4060/4553953910_411792ac63.jpg');
+  background-size: cover;
+}
+
+.welcome_text{
+  position: relative;
+  top: 20px;
+}

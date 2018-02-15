@@ -1,17 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './landing_page.css';
-import LoginForm from './login_form';
 
 
 
-export function WelcomePage(props){
-  return (
-    <div className="welcome_page section"> 
-      <h1> Welcome to Your Favorite Meals Sharing apps</h1>
-    </div>
-  )
-}
+
 
 export function DescriptionPage(props){
   return (
@@ -35,10 +27,3 @@ export function HowToUsePage(props){
 
 
 
-export function FooterPage(props){
-  return (
-    <div className="footer_page"> 
-      <h1> footer</h1>
-    </div>
-  )
-}

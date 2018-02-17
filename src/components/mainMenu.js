@@ -1,7 +1,6 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {whatToLoad} from '../actions/meal';
 import {Link} from 'react-router-dom';
 import {Navbar, NavItem, NavDropdown, Nav, MenuItem} from 'react-bootstrap';
 import './meal.css';
@@ -9,13 +8,6 @@ import './meal.css';
 
 export class MainMenu extends React.Component{
   
-  handleLeftMenu(title){
-    this.props.dispatch(whatToLoad(title));
-  }
-
-  handleRightMenu(title){
-    this.props.dispatch(whatToLoad(title));
-  }
   
   render(){ 
     console.log(this.props);

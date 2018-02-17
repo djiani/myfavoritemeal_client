@@ -3,14 +3,11 @@ import {connect} from 'react-redux';
 import MealList from './mealList';
 import SearchSection from './searchSection'
 import ViewsRecipes from './viewsRecipes';
-import AddMeal from './addMeal';
+//import AddMeal from './addMeal';
 export function DashBoard(props){ 
   //alert(props.whatToLoad);
-  if(props.addmeal){
-    return <AddMeal />;
-    
-  }
-  else if(props.viewsrecipes==='viewsrecipes'){
+  
+  if(props.viewsrecipes==='viewsrecipes'){
     return <ViewsRecipes meal={props.meals[props.indexMeal]}  />
   }
   

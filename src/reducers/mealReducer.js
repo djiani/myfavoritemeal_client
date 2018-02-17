@@ -48,14 +48,47 @@ const initialState = {
       owner: 'userName',
       image_url: 'https://www.kroger.com/asset/594046a8bae8a25175396ec2?data=1'
     }
-  ]
+  ], 
+  newMeal:{
+    name: '',
+    type: '',
+    difficulty:'',
+    hands_on: 0,
+    served: 0,
+    ingredients:[],
+    directions:[],
+    owner: '',
+    image_url: ''
+  }
 };
 
 export const mealReducer = (state=initialState, action) => {
-  if(action.type === actions.ADD_MEAL_FORM){
+  if(action.type === actions.ADD_INGREDIENT){
     return Object.assign({}, state, {
-      addmeal: true,
-      viewsrecipes: false
+      newMeal: {
+        name: state.newMeal.name,
+        type: state.newMeal.type,
+        difficulty: state.newMeal.difficulty,
+        served: state.newMeal.served,
+        owner: state.newMeal.owner,
+        image_url: state.newMeal.image_url,
+        ingredients: [...state.newMeal.ingredients, action.ingredient],
+        directions: state.newMeal.directions,
+      }
+    })
+  }
+  if(action.type === actions.ADD_DIRECTION){
+    return Object.assign({}, state, {
+      newMeal: {
+        name: state.newMeal.name,
+        type: state.newMeal.type,
+        difficulty: state.newMeal.difficulty,
+        served: state.newMeal.served,
+        owner: state.newMeal.owner,
+        image_url: state.newMeal.image_url,
+        ingredients: state.newMeal.ingredients,
+        directions: [...state.newMeal.directions, action.direction]
+      }
     })
   }
 
@@ -67,10 +100,15 @@ export const mealReducer = (state=initialState, action) => {
     })
   }
 
-  if(action.type === actions.WHAT_TO_LOAD){
-    console.log('text to load:'+ action.tobeloaded)
+  if(action.type === actions.ADD_MEAL){
     return Object.assign({}, state, {
-      whatToLoad: action.tobeloaded
+      meal:{
+        addmeal: state.meal.addmeal,
+        viewsrecipes: state.meal.viewsrecipes,
+        indexMeal: state.meal.indexMeal,
+        meals: [...state.meals.meals, action.meal]
+      }
+     
     })
   }
 

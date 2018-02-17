@@ -1,0 +1,16 @@
+.add-button {
+    padding: 8px;
+    color: blue;
+    border-radius: 4px;
+}
+
+.add-button a {
+    text-decoration: none;
+}
+
+.buttonElt{
+    display: inline-block;
+    margin: 5px;
+}
+
+

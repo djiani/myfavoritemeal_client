@@ -22,3 +22,15 @@ button{
 .ingredients_block, .direction_block{
   margin-top: 10px;
 }
+
+.list_ingredients{
+  background-color: LightGoldenRodYellow;
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.inlineBlock{
+  display: inline-block;
+}

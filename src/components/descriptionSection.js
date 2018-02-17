@@ -8,7 +8,7 @@ export default function DescriptionSection(props){
       </div>
       <div className='description_text'> 
         <h1> Experience My Favorite Meal</h1>
-        <p> MyFavirite Meals helps you sharing your taste for food with the reste of the world and helps 
+        <p> MyFavorite Meals helps you sharing your taste for food with the reste of the world and helps 
           inpirate others about the best plat out there who might be out of mind to what to eat or 
           who might have hard time to choose or order food or what to make for breakfast, lunch, dinner
         </p>

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
+
 import './addMealForm.css';
 
 
 export class AddMealForm extends React.Component {
 
   
+  onSubmit(values){
+    this.props.onSubmit(values);
+  }
 
   render(){ 
     const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
@@ -81,8 +85,10 @@ export class AddMealForm extends React.Component {
       </div>
     );
 
+    
+
     return (
-      <form onSubmit={this.props.handleSubmit}>
+      <form onSubmit={this.props.handleSubmit(values=> this.onSubmit(values))}>
         <Field
           name="mealName"
           type="text"

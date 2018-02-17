@@ -8,6 +8,7 @@ const initialState = {
   meals: [
     {
       name: 'Cherry Pork Tender Loin',
+      description: "short description", 
       type: "Lunch",
       difficulty:'Easy',
       hands_on: 15,
@@ -19,6 +20,7 @@ const initialState = {
     },
     {
       name: 'Chili-Lime Pork Roast',
+      description: "short description",
       type: "Lunch",
       difficulty:'Easy',
       hands_on: 20,
@@ -49,8 +51,9 @@ const initialState = {
       image_url: 'https://www.kroger.com/asset/594046a8bae8a25175396ec2?data=1'
     }
   ], 
-  newMeal:{
+  currentMeal:{
     name: '',
+    description: '',
     type: '',
     difficulty:'',
     hands_on: 0,
@@ -65,29 +68,15 @@ const initialState = {
 export const mealReducer = (state=initialState, action) => {
   if(action.type === actions.ADD_INGREDIENT){
     return Object.assign({}, state, {
-      newMeal: {
-        name: state.newMeal.name,
-        type: state.newMeal.type,
-        difficulty: state.newMeal.difficulty,
-        served: state.newMeal.served,
-        owner: state.newMeal.owner,
-        image_url: state.newMeal.image_url,
-        ingredients: [...state.newMeal.ingredients, action.ingredient],
-        directions: state.newMeal.directions,
+      currentMeal: {
+        ingredients: [...state.ingredients, action.ingredient]
       }
     })
   }
   if(action.type === actions.ADD_DIRECTION){
     return Object.assign({}, state, {
-      newMeal: {
-        name: state.newMeal.name,
-        type: state.newMeal.type,
-        difficulty: state.newMeal.difficulty,
-        served: state.newMeal.served,
-        owner: state.newMeal.owner,
-        image_url: state.newMeal.image_url,
-        ingredients: state.newMeal.ingredients,
-        directions: [...state.newMeal.directions, action.direction]
+      currentMeal: {
+        directions: [...state.directions, action.direction]
       }
     })
   }
@@ -102,13 +91,8 @@ export const mealReducer = (state=initialState, action) => {
 
   if(action.type === actions.ADD_MEAL){
     return Object.assign({}, state, {
-      meal:{
-        addmeal: state.meal.addmeal,
-        viewsrecipes: state.meal.viewsrecipes,
-        indexMeal: state.meal.indexMeal,
-        meals: [...state.meals.meals, action.meal]
-      }
-     
+        meals: [...state.meals, action.meal]
+      
     })
   }
 

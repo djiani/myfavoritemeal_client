@@ -23,9 +23,7 @@ export function DashBoard(props){
 const mapStateToProps = state => { 
     return {
         indexMeal: state.meal.indexMeal, 
-        addmeal: state.meal.addmeal,
         viewsrecipes: state.meal.viewsrecipes,
-        whatToLoad: state.meal.whatToLoad,
         meals: state.meal.meals
     };
 };

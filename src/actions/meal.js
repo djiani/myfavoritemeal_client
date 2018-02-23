@@ -22,3 +22,35 @@ export const addmeal = (meal) =>({
   type: ADD_MEAL,
   meal
 });
+
+export const BREAKFAST_CHECKED = 'BREAKFAST_CHECKED';
+export const breakfastchecked = ()=>({
+  type: BREAKFAST_CHECKED,
+  
+});
+
+export const LUNCH_CHECKED = 'LUNCH_CHECKED';
+export const lunchchecked = ()=>({
+  type: LUNCH_CHECKED,
+  
+});
+
+export const DINNER_CHECKED = 'DINNER_CHECKED';
+export const dinnerchecked = ()=>({
+  type: DINNER_CHECKED,
+});
+
+export const EASY_CHECKED = 'EASY_CHECKED';
+export const easychecked = ()=>({
+  type: EASY_CHECKED,
+});
+
+export const INTERMED_CHECKED = 'INTERMED_CHECKED';
+export const intermedchecked = ()=>({
+  type: INTERMED_CHECKED,
+});
+
+export const DIFFICULT_CHECKED = 'DIFFICULT_CHECKED';
+export const difficultchecked = ()=>({
+  type: DIFFICULT_CHECKED,
+});

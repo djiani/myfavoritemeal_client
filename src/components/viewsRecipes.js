@@ -20,7 +20,7 @@ const listDirections = props.meal.directions.map((direction, index) =>(
         <div  className="recipes_block">
           <ul>
           <li>{props.meal.description} </li>
-          <li> <span className="infoElt">Category </span>: {props.meal.type}</li>
+          <li> <span className="infoElt">Category </span>: {props.meal.category}</li>
           <li> <span className="infoElt">Difficulty </span>: {props.meal.difficulty}</li>
           <li> <span className="infoElt">Hands_on </span>: {props.meal.hands_on} munites</li>
           <li> <span className="infoElt">Served </span>: {props.meal.served} </li>

@@ -5,12 +5,18 @@ const initialState = {
   whatToLoad: '',
   viewsrecipes: '',
   indexMeal: 0,
+  breakfastChecked: false,
+  lunchChecked: false,
+  dinnerChecked: false,
+  easyChecked: false,
+  intermedChecked: false,
+  difficultChecked: false,
   meals: [
     {
       name: 'Cherry Pork Tender Loin',
       description: "short description", 
-      type: "Lunch",
-      difficulty:'Easy',
+      category: "breakfast",
+      difficulty:'difficult',
       hands_on: 15,
       served: 4,
       ingredients:['tomato', 'oinions'],
@@ -21,8 +27,8 @@ const initialState = {
     {
       name: 'Chili-Lime Pork Roast',
       description: "short description",
-      type: "Lunch",
-      difficulty:'Easy',
+      category: "dinner",
+      difficulty:'easy',
       hands_on: 20,
       served: 4,
       ingredients:['tomato', 'oinions'],
@@ -35,8 +41,8 @@ const initialState = {
       name: 'Mexican Chili Pie',
       description:'Craving a little something spicy for supper?' 
       +'This dish combines sweet cornbread, spicy chili, and creamy cheese in one simple casserole',
-      type: "Lunch",
-      difficulty:'Easy',
+      category: "lunch",
+      difficulty:'easy',
       hands_on: 20,
       served: 4,
       ingredients:['1 package (1.25 oz.) McCormick Chili Seasoning Mix', 
@@ -54,7 +60,7 @@ const initialState = {
   currentMeal:{
     name: '',
     description: '',
-    type: '',
+    category: '',
     difficulty:'',
     hands_on: 0,
     served: 0,
@@ -96,5 +102,39 @@ export const mealReducer = (state=initialState, action) => {
     })
   }
 
+  if(action.type === actions.BREAKFAST_CHECKED){
+    return Object.assign({}, state, {
+        breakfastChecked: !state.breakfastChecked
+    })
+  }
+
+  if(action.type === actions.LUNCH_CHECKED){
+    return Object.assign({}, state, {
+        lunchChecked: !state.lunchChecked
+    })
+  }
+
+  if(action.type === actions.DINNER_CHECKED){
+    return Object.assign({}, state, {
+        dinnerChecked: !state.dinnerChecked
+    })
+  }
+
+  if(action.type === actions.EASY_CHECKED){
+    return Object.assign({}, state, {
+        easyChecked: !state.easyChecked
+    })
+  }
+  if(action.type === actions.INTERMED_CHECKED){
+    return Object.assign({}, state, {
+        intermedChecked: !state.intermedChecked
+    })
+  }
+
+  if(action.type === actions.DIFFICULT_CHECKED){
+    return Object.assign({}, state, {
+        difficultChecked: !state.difficultChecked
+    })
+  }
   return state;
 }

@@ -95,12 +95,12 @@ export const mealReducer = (state=initialState, action) => {
     })
   }
 
-  if(action.type === actions.ADD_MEAL){
-    return Object.assign({}, state, {
-        meals: [...state.meals, action.meal]
+  // if(action.type === actions.ADD_MEAL){
+  //   return Object.assign({}, state, {
+  //       meals: [...state.meals, action.meal]
       
-    })
-  }
+  //   })
+  // }
 
   if(action.type === actions.BREAKFAST_CHECKED){
     return Object.assign({}, state, {

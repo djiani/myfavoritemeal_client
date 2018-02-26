@@ -28,7 +28,9 @@ export class Meal extends React.Component{
           </ul>
         </div>
         <div>
-          <button className="recipes_btn" onClick={()=>this.handleViewsRecipes(this.props.indexMeal, 'viewsrecipes')} > view recipes</button>
+          {/*<a href={`#:${this.props.indexMeal}`} >*/}
+            <button className="recipes_btn" onClick={()=>this.handleViewsRecipes(this.props.indexMeal, 'viewsrecipes')} > view recipes</button>
+          
         </div>
       </div>
     );

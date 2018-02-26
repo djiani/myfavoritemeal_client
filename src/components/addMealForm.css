@@ -1,36 +1,73 @@
-.addMeal-form{
-  width: 100%;
-  margin:0 auto;
-  border: 1px solid black;
-  height: auto;
+ul{
+  list-style-type: none;
+  padding-left: 10px;
 }
 
-.submit_block{
-  width: 100%;
-  margin: 10px;
-}
 
 .radio{
   display: inline;
 }
 
-button{
-  margin-top: 10px;
-  margin-bottom: 10px;
+.radio_label{
+  padding-right: 10px;
 }
+.radio_block{
+  border: 1px solid black;
+  height: 50px;
+  margin: 0 auto;
+}
+
+
 
 .ingredients_block, .direction_block{
   margin-top: 10px;
 }
 
 .list_ingredients{
+  width: 60%;
+  max-height: 500px;
+  overflow: scroll;
   background-color: LightGoldenRodYellow;
   border: 1px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
   padding-bottom: 20px;
 }
 
 .inlineBlock{
   display: inline-block;
+}
+
+.input_length{
+  width: 60%;
+  height: 50px;
+}
+
+.input_length_ing1{
+  width: 85%;
+  height: 50px;
+}
+.input_length_ing2{
+  width: 10%;
+  height: 50px;
+  vertical-align: center;
+  float: right;
+  margin-right: 5px;
+}
+
+
+
+
+@media only screen and (max-width: 768px){
+  .input_length{
+    width: 100%;
+    height: 30px;
+  }
+  .list_ingredients{
+    width: 100%;
+    max-height: 300px;
+  }
+
 }

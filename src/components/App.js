@@ -49,7 +49,7 @@ export class App extends React.Component {
           </header>
           <div className="main">
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/home" component={Dashboard} />
+            <Route       path="/home" component={Dashboard} />
             <Route exact path='/register' component={RegistrationPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/addmeal' component={AddMealPage} />

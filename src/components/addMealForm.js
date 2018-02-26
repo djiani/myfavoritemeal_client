@@ -6,45 +6,45 @@ import './addMealForm.css';
 
 
 export class AddMealForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.image_url = "";
+    this.image_path = "";
+  }
 
+  handleFiles(event){
+    console.log(event.target.value);
+    this.image_path = this.fileInput.files[0].path;
+    this.image_url = this.fileInput.files[0].name;
+  }
+  
   
   onSubmit(values){
+    values.image_url = this.image_url;
     this.props.onSubmit(values);
   }
 
   render(){ 
     const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-      <div>
+      <div >
         <label>{label}</label>
         <div>
-          <input {...input} type={type} placeholder={placeholder} />
+          <input {...input} type={type} placeholder={placeholder} className="input_length"/>
           {touched && error && <span>{error}</span>}
         </div>
       </div>
     );
-    const renderField2 = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-      <div className="inlineBlock">
-        <input {...input} type={type} placeholder={placeholder} />
-        {touched && error && <span>{error}</span>}
-      </div>
-     
-    );
 
 
 
-    const renderIngredients = ({fields, meta: { touched, error, submitFailed } }) => (
+    const renderIngredients = ({fields, info, meta: { touched, error, submitFailed } }) => (
       <div>
         <ul>
           {fields.map((element, index) => (
             <li key={index}>
               <div>
-                <Field
-              name={`${element}.name`}
-              type="text"
-              component={renderField2}
-
-            />
-                <button type="button" title="Remove element" onClick={() => fields.remove(index)}>
+                <Field name={`${element}.name`} component="textarea" className="input_length_ing1"/>
+                <button type="button" title="Remove element" onClick={() => fields.remove(index) } className="input_length_ing2">
                   remove
                 </button>
               </div>
@@ -52,45 +52,17 @@ export class AddMealForm extends React.Component {
           ))}
         </ul>
         <div>
-          <a  onClick={() => fields.push({})}>Add new ingredient...</a>
+          <a  onClick={() => fields.push({})}>Add new {info}...</a>
           {(touched || submitFailed) && error && <span>{error}</span>}
         </div>
       </div>
     );
 
-    const renderDirections = ({fields, meta: { touched, error, submitFailed } }) => (
-      <div>
-        <ul>
-          {fields.map((element, index) => (
-            <li key={index}>
-              <div>
-                <Field
-              name={`${element}.name`}
-              type="text"
-              component={renderField2}
-
-            />
-                <button type="button" title="Remove element" onClick={() => fields.remove(index)}>
-                  remove
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        <div>
-          <a  onClick={() => fields.push({})}>Add new step...</a>
-          {(touched || submitFailed) && error && <span>{error}</span>}
-        </div>
-      </div>
-    );
-
-    
 
     return (
       <form onSubmit={this.props.handleSubmit(values=> this.onSubmit(values))}>
         <Field
-          name="mealName"
+          name="name"
           type="text"
           component={renderField}
           label="Meal Name"
@@ -99,26 +71,37 @@ export class AddMealForm extends React.Component {
         <div>
           <label>Description</label>
           <div>
-            <Field name="description" component="textarea" />
+            <Field name="description" component="textarea" className="input_length"/>
+          </div>
+        </div>
+
+        <div>
+          <label>Category</label>
+          <div>
+            <Field name="category" component="select" className="input_length" >
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+            </Field>
           </div>
         </div>
 
         <div>
           <label>Difficulty:</label>
-          <div>
-            <label>
+          <div className="radio_block input_length">
+            <label className="radio_label">
               <Field name="difficulty" component="input" type="radio" value="easy" />
               {' '}
               Easy
               {'   '}
             </label>
-            <label>
+            <label className="radio_label">
               <Field name="difficulty" component="input" type="radio" value="intermediate" />
               {' '}
               Intermediate
               {'   '}
             </label>
-            <label>
+            <label className="radio_label">
               <Field name="difficulty" component="input" type="radio" value="hard" />
               {' '}
               Hard
@@ -152,14 +135,29 @@ export class AddMealForm extends React.Component {
         />
         <div className="list_ingredients">
           <h3> List ingredients </h3>
-          <FieldArray name="ingredients" component={renderIngredients} />
+          <FieldArray name="ingredients" info="ingredient" component={renderIngredients} />
         </div>
 
         <div className="list_ingredients">
           <h3> Cooking direction </h3>
-          <FieldArray name="directions" component={renderDirections} />
+          <FieldArray name="directions"  info="step" component={renderIngredients} />
         </div>
-       
+
+        <div className="list_ingredients">
+          <h3>Upload Pictures</h3>
+          <div>
+            <input name="image_url" component="input" type="file" accept="image/*" 
+            onChange={event => this.handleFiles(event)} ref={input => {
+              this.fileInput = input;
+            }}  className="input_length" />
+          </div>
+          <div>
+            <img src={this.image_url} alt="testmodified"/>
+          </div>
+
+        </div>
+        
+  
         
         <div>
           <button type="submit" disabled={this.props.pristine || this.props.submitting}>Submit</button>

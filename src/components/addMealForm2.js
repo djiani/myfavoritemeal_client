@@ -15,7 +15,13 @@ export class AddMealForm extends React.Component {
 
   render(){
  
-
+const renderField2 = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+      <div className="inlineBlock2">
+        <input {...input} type={type} placeholder={placeholder} />
+        {touched && error && <span>{error}</span>}
+      </div>
+     
+    );
   const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>

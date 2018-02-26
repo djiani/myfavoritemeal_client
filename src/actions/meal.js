@@ -1,3 +1,7 @@
+import {SubmissionError} from 'redux-form';
+import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
+
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const addIngredient = (ingredient) => ({
   type: ADD_INGREDIENT,
@@ -17,11 +21,32 @@ export const viewsRecipes = (indexMeal, title) =>({
   title
 });
 
-export const ADD_MEAL = 'ADD_MEAL';
-export const addmeal = (meal) =>({
-  type: ADD_MEAL,
-  meal
-});
+
+
+export const addmeal = (meal) =>dispatch => {
+  return fetch(`${API_BASE_URL}/meals`, {
+    method: 'POST',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify(meal)
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => {
+        const {reason, message, location} = err;
+        if (reason === 'ValidationError') {
+            // Convert ValidationErrors into SubmissionErrors for Redux Form
+          return Promise.reject(
+            new SubmissionError({
+                [location]: message
+            })
+          );
+        }
+    }
+  );
+}
+  
 
 export const BREAKFAST_CHECKED = 'BREAKFAST_CHECKED';
 export const breakfastchecked = ()=>({

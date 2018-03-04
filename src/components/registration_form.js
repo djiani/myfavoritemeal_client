@@ -2,55 +2,76 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
-import Input from './input';
+
+import './registration_form.css';
+
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
-const passwordLength = length({min: 5, max: 72});
+const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
         const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
+        console.log(user);
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
     }
 
     render() {
+
+        const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+          <div >
+            <label>{label} {touched && error && <span className="error">{error}</span>}</label>
+            <div>
+              <input {...input} type={type} placeholder={placeholder} className="input_length"/>
+              
+            </div>
+          </div>
+        );
+
         return (
-            <form
-                className="login-form"
-                onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                )}>
-                <label htmlFor="firstName">First name</label>
-                <Field component={Input} type="text" name="firstName" />
-                <label htmlFor="lastName">Last name</label>
-                <Field component={Input} type="text" name="lastName" />
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    validate={[required, nonEmpty, isTrimmed]}
+            <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values) )} >
+               <Field
+                  name="firstName"
+                  type="text"
+                  component={renderField}
+                  label="FirstName"
                 />
-                <label htmlFor="password">Password</label>
+                
                 <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    validate={[required, passwordLength, isTrimmed]}
+                  name="lastName"
+                  type="text"
+                  component={renderField}
+                  label="LastName"
                 />
-                <label htmlFor="passwordConfirm">Confirm password</label>
+                
                 <Field
-                    component={Input}
-                    type="password"
-                    name="passwordConfirm"
-                    validate={[required, nonEmpty, matchesPassword]}
+                  name="username"
+                  type="text"
+                  component={renderField}
+                  label="Username"
+                  validate={[required, nonEmpty, isTrimmed]}
+                />
+
+                <Field
+                  name="password"
+                  type="password"
+                  component={renderField}
+                  label="Password"
+                  validate={[required, passwordLength, isTrimmed]}
+                />
+                <Field
+                  name="passwordConfirm"
+                  type="password"
+                  component={renderField}
+                  label="Confirm Password"
+                  validate={[required, nonEmpty, matchesPassword]}
                 />
                 <button
                     type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
+                    disabled={this.props.pristine || this.props.submitting} className="submit_button">
                     Register
                 </button>
             </form>

@@ -43,7 +43,10 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const login = (username, password) => dispatch => {
+    console.log('dispatch authRequest start ...');
     dispatch(authRequest());
+    console.log('about to fetch auth/login ...');
+    console.log(username, password);
     return (
         fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
@@ -51,17 +54,20 @@ export const login = (username, password) => dispatch => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username,
-                password
+                username: username,
+                password: password
             })
         })
             // Reject any requests which don't return a 200 status, creating
             // errors which follow a consistent format
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
-            .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+            .then(({authToken}) => {
+                storeAuthInfo(authToken, dispatch);
+            })
             .catch(err => {
                 const {code} = err;
+                console.log(err);
                 const message =
                     code === 401
                         ? 'Incorrect username or password'

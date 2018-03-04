@@ -1,16 +1,16 @@
 import * as actions from  '../actions/meal';
 
 const initialState = {
-  addmeal: false,
-  whatToLoad: '',
-  viewsrecipes: '',
-  indexMeal: 0,
+  error: null,
+  loading: false,
+  userlogin: false,
   breakfastChecked: false,
   lunchChecked: false,
   dinnerChecked: false,
   easyChecked: false,
   intermedChecked: false,
   difficultChecked: false,
+
   meals: [
     {
       name: 'Cherry Pork Tender Loin',
@@ -87,13 +87,12 @@ export const mealReducer = (state=initialState, action) => {
     })
   }
 
-  if(action.type === actions.VIEWS_RECIPES){
-    return Object.assign({}, state, {
-      viewsrecipes: action.title,
-      addmeal: false,
-      indexMeal: action.indexMeal
-    })
-  }
+  // if(action.type === actions.VIEWS_RECIPES){
+  //   return Object.assign({}, state, {
+  //     viewsrecipes: action.title,
+  //     indexMeal: action.indexMeal
+  //   })
+  // }
 
   // if(action.type === actions.ADD_MEAL){
   //   return Object.assign({}, state, {
@@ -136,5 +135,33 @@ export const mealReducer = (state=initialState, action) => {
         difficultChecked: !state.difficultChecked
     })
   }
+  if(action.type === actions.LOADMEALDATA_SUCCESS){
+    return Object.assign({}, state, {
+      meals: action.meals,
+      loading: false,
+      error: null
+    });
+  }
+
+  if(action.type === actions.LOADMEALDATA_FAILURE){
+    return Object.assign({}, state, {
+      error: action.error,
+      loading: false
+    });
+  }
+
+  if(action.type === actions.USER_LOGIN){
+    return Object.assign({}, state, {
+      userlogin: true
+    })
+  }
+
+//don't need search_meals
+  if(action.type === actions.SEARCH_MEALS){
+    return Object.assign({}, state, {
+      userlogin: true
+    })
+  }
+
   return state;
 }

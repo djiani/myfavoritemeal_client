@@ -14,12 +14,12 @@ export const addDirection = (direction) => ({
   direction
 });
 
-export const VIEWS_RECIPES = 'VIEWS_MEAL';
-export const viewsRecipes = (indexMeal, title) =>({
-  type: VIEWS_RECIPES,
-  indexMeal,
-  title
-});
+// export const VIEWS_RECIPES = 'VIEWS_MEAL';
+// export const viewsRecipes = (indexMeal, title) =>({
+//   type: VIEWS_RECIPES,
+//   indexMeal,
+//   title
+// });
 
 
 
@@ -78,4 +78,28 @@ export const intermedchecked = ()=>({
 export const DIFFICULT_CHECKED = 'DIFFICULT_CHECKED';
 export const difficultchecked = ()=>({
   type: DIFFICULT_CHECKED,
+});
+
+export const LOADMEALDATA_SUCCESS = 'LOADMEALDATA_SUCCESS';
+export const loadMealDataSuccess = (meals)=>({
+  type: LOADMEALDATA_SUCCESS,
+  meals
+});
+
+export const LOADMEALDATA_FAILURE = 'LOADMEALDATA_FAILURE';
+export const loadMealDataFailure = (err)=>({
+  type: LOADMEALDATA_FAILURE,
+  err
+});
+
+export const USER_LOGIN = 'USER_LOGIN';
+export const userlogin = (userlogin)=> ({
+  type: USER_LOGIN,
+  userlogin
+});
+
+export const SEARCH_MEALS = 'SEARCH_MEALS';
+export const searchMeals = (searchTerm)=> ({
+  type: SEARCH_MEALS,
+  searchTerm
 });

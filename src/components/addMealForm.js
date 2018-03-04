@@ -1,6 +1,9 @@
+
 import React from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
+import {API_BASE_URL} from '../config';
 
+//import {normalizeResponseErrors} from '../utils';
 
 import './addMealForm.css';
 
@@ -8,19 +11,33 @@ import './addMealForm.css';
 export class AddMealForm extends React.Component {
   constructor(props){
     super(props);
-    this.image_url = "";
-    this.image_path = "";
+    this.image_url = "peter.jpg";
   }
 
   handleFiles(event){
-    console.log(event.target.value);
-    this.image_path = this.fileInput.files[0].path;
-    this.image_url = this.fileInput.files[0].name;
+    return fetch(`${API_BASE_URL}/upload/${this.fileInput.files[0].name}`)
+    .then(res =>{
+      if(!res.ok){
+        return Promise.reject(res.statusText);
+      }
+      res.json();
+    })
+    .then(url_data => {
+      console.log(url_data)
+      //udapte image_url with the true path from aws
+    })
+    .catch(err =>{ 
+      console.log(err)
+    });
   }
+
+ 
+
   
   
   onSubmit(values){
     values.image_url = this.image_url;
+    console.log(values);
     this.props.onSubmit(values);
   }
 
@@ -43,8 +60,8 @@ export class AddMealForm extends React.Component {
           {fields.map((element, index) => (
             <li key={index}>
               <div>
-                <Field name={`${element}.name`} component="textarea" className="input_length_ing1"/>
-                <button type="button" title="Remove element" onClick={() => fields.remove(index) } className="input_length_ing2">
+                <Field name={`${element}.name`} component="textarea" className="input_length_2"/>
+                <button type="button" title="Remove element" onClick={() => fields.remove(index) } className="input_length_remove_btn">
                   remove
                 </button>
               </div>
@@ -79,6 +96,7 @@ export class AddMealForm extends React.Component {
           <label>Category</label>
           <div>
             <Field name="category" component="select" className="input_length" >
+              <option value="">--</option>
               <option value="breakfast">Breakfast</option>
               <option value="lunch">Lunch</option>
               <option value="dinner">Dinner</option>
@@ -127,7 +145,7 @@ export class AddMealForm extends React.Component {
           placeholder="0"
         />
          <Field
-          name="owner"
+          name="owner.name"
           component= {renderField}
           type="text"
           label="Publish By"
@@ -160,8 +178,8 @@ export class AddMealForm extends React.Component {
   
         
         <div>
-          <button type="submit" disabled={this.props.pristine || this.props.submitting}>Submit</button>
-          <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset}>
+          <button type="submit" disabled={this.props.pristine || this.props.submitting} className="submit_button2">Submit</button>
+          <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset} className="cancel_button2">
             Clear Values
           </button>
         </div>
@@ -169,6 +187,7 @@ export class AddMealForm extends React.Component {
     );
   }
 };
+
 
 export default reduxForm({
   form: 'addMealForm', 

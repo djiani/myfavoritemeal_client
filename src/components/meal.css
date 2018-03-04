@@ -18,3 +18,12 @@
 .meal_name{
   text-overflow: ellipsis;
 }
+
+.recipes_btn{
+  background-color: #0247FE;
+  border-radius: 10px;
+}
+
+.text_bold{
+  font-weight: bold;
+}

@@ -1,61 +1,49 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import MealList from './mealList';
-import SearchSection from './searchSection'
-import ViewsRecipes from './viewsRecipes';
+import SearchSection from './searchSection';
 import {API_BASE_URL} from '../config';
+import {loadMealDataSuccess, loadMealDataFailure} from '../actions/meal';
+
 //import AddMeal from './addMeal';
 export class DashBoard extends React.Component{ 
-  constructor(props){
-    super(props);
-    this.state = {
-      error: null,
-      loading: false
-    }
-  }
-
+  
   componentDidMount() {
+    console.log('loading data from db');
       this.loadMealData();
+
   }
   
   loadMealData(){
-    this.setState({
-      error: null, 
-      loading: true
-    });
-
+    console.log('loadMealData call!');
     return fetch(`${API_BASE_URL}/meals`)
     .then(res =>{
       if(!res.ok){
         return Promise.reject(res.statusText);
       }
-      res.json();
+      return res.json();
     })
-    .then(meals => this.setState({
-      loading: false,
-      meals: meals
-    }))
-    .catch(err =>
-      this.setState({
-        error: 'Could not load meal data',
-        loading: false
-      }));
+    .then(meals => {
+      console.log(meals)
+      this.props.dispatch(loadMealDataSuccess(meals)); 
+    })
+    .catch(err =>{ 
+      console.log(err)
+      this.props.dispatch(loadMealDataFailure(err))
+
+    });
   }
 
   render(){ 
     let body;
-    if(this.state.error){
+    if(this.props.error){
       body = (
-        <div className="message message-error">{this.state.error}</div>
+        <div className="message message-error">{this.props.error}</div>
       );
-    }else if(this.state.loading){
+    }else if(this.props.loading){
       body = (
         <div className="message message-default">Loading data...</div>
       );
-    }else if(this.props.viewsrecipes==='viewsrecipes') {
-      body = (
-        <ViewsRecipes meal={this.props.meals[this.props.indexMeal]}  />
-      )
     }else{
       body= (
         <div>
@@ -78,6 +66,8 @@ const mapStateToProps = state => {
     return {
         indexMeal: state.meal.indexMeal, 
         viewsrecipes: state.meal.viewsrecipes,
+        loading: state.meal.loading,
+        error: state.meal.error,
         meals: state.meal.meals
     };
 };

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {API_BASE_URL} from '../config';
 import axios from 'axios';
 import RenderField from './renderField';
-import {Redirect} from 'react-router-dom'
+
 
 //import {normalizeResponseErrors} from '../utils';
 
@@ -78,8 +78,10 @@ export class UpdateMealForm extends React.Component {
 
   handleCancel(event){
     event.preventDefault();
-    alert('test cancel click');
-    return <Redirect to="/home" />
+    console.log('check history in handleCancel')
+    console.log(this.props.history)
+    this.props.history.push('/home')
+    //return <Redirect to="/home" />
   }
 
   render(){ 
@@ -92,7 +94,8 @@ export class UpdateMealForm extends React.Component {
     //     </div>
     //   </div>
     // );
-    
+    console.log('check history in updatefrom')
+    console.log(this.props.history)
 
     let ImgPreview;
     if(this.state.file_url){

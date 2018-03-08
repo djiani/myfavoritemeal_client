@@ -19,7 +19,7 @@ export class AddMealForm extends React.Component {
 
     };
   }
-
+  
   handleFileUpload(event){
     event.preventDefault();
     this.setState({loading: true});

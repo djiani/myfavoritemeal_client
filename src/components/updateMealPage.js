@@ -72,7 +72,8 @@ export class UpdateMealPage extends React.Component{
     
     return (
         <div className='page_styling'>
-          <UpdateMealForm onSubmit={values => this.showResults(values)} meal={this.state.meal} />
+
+          <UpdateMealForm onSubmit={values => this.showResults(values)} meal={this.state.meal} history={this.props.history} />
         </div>
     )
   }  

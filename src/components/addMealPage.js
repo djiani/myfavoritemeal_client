@@ -8,6 +8,15 @@ import './addMealPage.css';
 
 
 export class AddMealPage extends React.Component{
+  // componentWillUpdate(){
+  //   if(this.props.success){
+  //     alert('new meal item successfully added!! Go back to home page' );
+  //     this.props.history.push("/home");
+  //   }
+  //   if(this.props.error){
+  //     alert(this.props.error)
+  //   }
+  // }
 
   showResults(values){
     console.log(values);
@@ -19,29 +28,17 @@ export class AddMealPage extends React.Component{
     }
 
     this.props.dispatch(addmeal(values))
-    console.log('check props success meal added');
-    console.log(this.props.success);
-    if(this.props.success){
-      alert('new meal item successfully added!! Go back to home page' );
-      this.props.history.push("/home");
-    }
-
-    if(this.props.error){
-      alert(this.props.error)
-
-    }
-    
-    
+    alert('new meal item successfully added!! Go back to home page' );
+    this.props.history.push("/home");
   }
 
-
   render(){
-    let error;
-    if(this.props.error){
-        error = (
-          <div> {this.props.error} </div>
-        )
-    }
+    // let error;
+    // if(this.props.error){
+    //     error = (
+    //       <div> {this.props.error} </div>
+    //     )
+    // }
     return (
         <div className='page_styling'>
 

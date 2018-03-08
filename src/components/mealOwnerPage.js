@@ -7,34 +7,36 @@ import {loadMealDataSuccess, loadMealDataFailure, checkOwnerMeal} from '../actio
 import {Grid, Row, Col} from 'react-bootstrap';
 
 //import AddMeal from './addMeal';
-export class DashBoard extends React.Component{ 
+export class MealOwnerPage extends React.Component{ 
   
   componentDidMount() {
     console.log('loading data from db');
-    this.props.dispatch(checkOwnerMeal(false));
-    this.loadMealData();
+    this.props.dispatch(checkOwnerMeal(true));
+      this.loadMealData();
 
   }
   
   loadMealData(){
     console.log('loadMealData call!');
-    return fetch(`${API_BASE_URL}/meals`)
-    .then(res =>{
-      if(!res.ok){
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then(meals => {
-      console.log(meals)
-      this.props.dispatch(loadMealDataSuccess(meals)); 
-    })
-    .catch(err =>{ 
-      console.log(err)
-      this.props.dispatch(loadMealDataFailure(err))
+    console.log(this.props.match.params);
+    return fetch(`${API_BASE_URL}/meals/mymeal/${this.props.match.params.username}`)
+        .then(res =>{
+          if(!res.ok){
+            return Promise.reject(res.statusText);
+          }
+         // console.log(res.json())
+          return res.json();
+        })
+        .then(meals => {
+          console.log(meals)
+          this.props.dispatch(loadMealDataSuccess(meals)); 
+        })
+        .catch(err =>{ 
+          console.log(err)
+          this.props.dispatch(loadMealDataFailure(err))
 
-    });
-  }
+        });
+    }
 
   render(){ 
     let body;
@@ -80,4 +82,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(DashBoard);
+export default connect(mapStateToProps)(MealOwnerPage);

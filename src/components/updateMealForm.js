@@ -1,20 +1,22 @@
 
 import React from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
+import {connect} from 'react-redux';
 import {API_BASE_URL} from '../config';
 import axios from 'axios';
 import RenderField from './renderField';
-import {required, nonEmpty} from '../validators';
+import {Redirect} from 'react-router-dom'
+
 //import {normalizeResponseErrors} from '../utils';
 
 import './addMealForm.css';
 
 
-export class AddMealForm extends React.Component {
+export class UpdateMealForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      file_url: null,
+      file_url: '',
       loading: false
 
     };
@@ -31,7 +33,6 @@ export class AddMealForm extends React.Component {
       }
     }).then(response => {
       // handle your response;
-      console.log(response);
       this.setState({
         file_url : response.data.location,
         loading: false});
@@ -39,36 +40,50 @@ export class AddMealForm extends React.Component {
     }).catch(error => {
       // handle your error
       this.setState({
-        file_url : '',
+        file_url : null,
         loading:false});
     });
   }
 
+  // handleFileUpload2(event){
+  //   this.setState({file: event.target.files});
+
+  // }
+ 
+
+  
   
   onSubmit(values){
     if(this.state.loading){
       alert("Please, wait the the image to load!!!!");
     }else {
-      if(!this.state.file_url){
-        values.image_url = ''
-      }else{
-        values.image_url = this.state.file_url;
-      }
       if(!values.ingredients){
         values.ingredients = [];
       }
       if(!values.directions){
         values.directions = []
       }
-    
-    console.log(values);
+      if(this.state.file_url){
+        values.image_url = this.state.file_url
+      }else if(this.props.meal.meal){
+        values.image_url = this.props.meal.meal.image_url
+      }else{
+        values.image_url = ''
+      }
+
     this.props.onSubmit(values);
     }
     
   }
 
+  handleCancel(event){
+    event.preventDefault();
+    alert('test cancel click');
+    return <Redirect to="/home" />
+  }
+
   render(){ 
-    // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+    // const RenderField2 = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
     //   <div >
     //     <label>{label}</label>
     //     <div>
@@ -77,19 +92,26 @@ export class AddMealForm extends React.Component {
     //     </div>
     //   </div>
     // );
+    
 
     let ImgPreview;
     if(this.state.file_url){
       ImgPreview = (
         <div>
-        <img className='image-preview' src={this.state.file_url}  alt="test" />
+          <img className='image-preview' src={this.state.file_url}  alt="test" />
+        </div>
+      )
+    }else if(this.props.meal.meal){
+      ImgPreview = (
+        <div>
+          <img className='image-preview' src={this.props.meal.meal.image_url}  alt="test" />
         </div>
       )
     }
     if(this.state.loading){
       ImgPreview = (
         <div>
-        <h3> Loading image ... </h3>
+          <h3> Loading image ... </h3>
         </div>
       )
     }
@@ -101,7 +123,7 @@ export class AddMealForm extends React.Component {
           {fields.map((element, index) => (
             <li key={index}>
               <div>
-                <Field name={`${element}.name`} component="textarea" className="input_length_2"/>
+                <Field name={`${element}`} component="textarea" className="input_length_2"/>
                 <button type="button" title="Remove element" onClick={() => fields.remove(index) } className="input_length_remove_btn">
                   remove
                 </button>
@@ -124,21 +146,19 @@ export class AddMealForm extends React.Component {
           type="text"
           component={RenderField}
           label="Meal Name"
-          placeholder="Meal Name"
           className="input_length"
-          validate={[required, nonEmpty]}
         />
         <div>
-          <label>Description</label> 
+          <label>Description</label>
           <div>
-            <Field name="description" component="textarea" className="input_length" validate={[required, nonEmpty]}/>
+            <Field name="description" component="textarea" className="input_length"/>
           </div>
         </div>
 
         <div>
           <label>Category</label>
           <div>
-            <Field name="category" component="select" className="input_length" validate={[required, nonEmpty]}>
+            <Field name="category" component="select" className="input_length" >
               <option value="">--</option>
               <option value="breakfast">Breakfast</option>
               <option value="lunch">Lunch</option>
@@ -151,19 +171,19 @@ export class AddMealForm extends React.Component {
           <label>Difficulty:</label>
           <div className="radio_block input_length">
             <label className="radio_label">
-              <Field name="difficulty" component="input" type="radio" value="easy" validate={[required, nonEmpty]}/>
+              <Field name="difficulty" component="input" type="radio" value="easy" />
               {' '}
               Easy
               {'   '}
             </label>
             <label className="radio_label">
-              <Field name="difficulty" component="input" type="radio" value="intermediate" validate={[required, nonEmpty]}/>
+              <Field name="difficulty" component="input" type="radio" value="intermediate" />
               {' '}
               Intermediate
               {'   '}
             </label>
             <label className="radio_label">
-              <Field name="difficulty" component="input" type="radio" value="hard" validate={[required, nonEmpty]}/>
+              <Field name="difficulty" component="input" type="radio" value="hard" />
               {' '}
               Hard
               {' '}
@@ -179,7 +199,6 @@ export class AddMealForm extends React.Component {
           label="Hands_on"
           placeholder="0"
           className="input_length"
-          validate={[required, nonEmpty]}
         />
       
         <Field
@@ -189,7 +208,6 @@ export class AddMealForm extends React.Component {
           label="Served"
           placeholder="0"
           className="input_length"
-          validate={[required, nonEmpty]}
         />
          <Field
           name="owner.name"
@@ -198,7 +216,6 @@ export class AddMealForm extends React.Component {
           label="Publish By"
           placeholder=""
           className="input_length"
-          validate={[required, nonEmpty]}
         />
         <div className="list_ingredients">
           <h3> List Ingredients </h3>
@@ -224,11 +241,10 @@ export class AddMealForm extends React.Component {
         </div>
         
   
-        
         <div>
-          <button type="submit" disabled={this.props.pristine || this.props.submitting} className="submit_button2">Submit</button>
-          <button type="button" disabled={this.props.pristine || this.props.submitting} onClick={this.props.reset} className="cancel_button2">
-            Clear Values
+          <button type="submit" className="submit_button2">Update</button>
+          <button type="button" onClick={event =>this.handleCancel(event)} className="cancel_button2">
+            Cancel
           </button>
         </div>
       </form>
@@ -237,6 +253,15 @@ export class AddMealForm extends React.Component {
 };
 
 
-export default reduxForm({
-  form: 'addMealForm', 
-})(AddMealForm);
+UpdateMealForm = reduxForm({
+  form: 'updateMealForm', 
+})(UpdateMealForm);
+
+UpdateMealForm = connect(
+  state =>({
+    initialValues: state.meal.currentMeal.meal
+  })
+)(UpdateMealForm);
+
+
+export default UpdateMealForm;

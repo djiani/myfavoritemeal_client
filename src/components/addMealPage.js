@@ -1,7 +1,6 @@
 import React from 'react';
 //import AddMeal from './addMeal';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom'
 import AddMealForm from './addMealForm';
 import {addmeal} from '../actions/meal';
 
@@ -15,18 +14,39 @@ export class AddMealPage extends React.Component{
     if(this.props.currentUser ){
       values.owner.username = this.props.currentUser.username;
     }else{
-      values.owner.username = '';
+      alert('oupppss!!! Sign in first!!!!')
+      return this.props.history.push("/");
     }
 
     this.props.dispatch(addmeal(values))
-    return <Redirect to="/home" />
+    console.log('check props success meal added');
+    console.log(this.props.success);
+    if(this.props.success){
+      alert('new meal item successfully added!! Go back to home page' );
+      this.props.history.push("/home");
+    }
+
+    if(this.props.error){
+      alert(this.props.error)
+
+    }
+    
+    
   }
 
 
   render(){
+    let error;
+    if(this.props.error){
+        error = (
+          <div> {this.props.error} </div>
+        )
+    }
     return (
         <div className='page_styling'>
+
           <AddMealForm onSubmit={values => this.showResults(values)} />
+    
         </div>
     )
   }  
@@ -35,7 +55,9 @@ export class AddMealPage extends React.Component{
 
 const mapStateToProps = state =>{
   return {
-    currentUser : state.auth.currentUser  
+    currentUser : state.auth.currentUser,
+    error: state.meal.error,
+    success: state.meal.success
   }
   
 }

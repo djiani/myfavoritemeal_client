@@ -10,6 +10,8 @@
   height: 100%;
   display: inline-block;
   float: left;
+  padding-left: 15px;
+  padding-right: 15px;
   border-right: 1px solid black;
 }
 .recipes_img{
@@ -33,3 +35,16 @@
   color: black;
 }
 
+.meal_btn{
+  margin:5px;
+  width: 60px;
+  border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .recipes_block{
+    width: 100%;
+  }
+}

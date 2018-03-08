@@ -3,6 +3,7 @@ import * as actions from  '../actions/meal';
 const initialState = {
   error: null,
   loading: false,
+  success: false,
   userlogin: false,
   breakfastChecked: false,
   lunchChecked: false,
@@ -10,33 +11,11 @@ const initialState = {
   easyChecked: false,
   intermedChecked: false,
   difficultChecked: false,
+  isOwnerMeal: false,
+  mealID: '',
 
   meals: [
-    {
-      name: 'Cherry Pork Tender Loin',
-      description: "short description", 
-      category: "breakfast",
-      difficulty:'difficult',
-      hands_on: 15,
-      served: 4,
-      ingredients:['tomato', 'oinions'],
-      directions:['step1', 'ste2'],
-      owner: 'userName',
-      image_url: 'https://www.kroger.com/asset/594046c9bae8a2517539743e?data=1'
-    },
-    {
-      name: 'Chili-Lime Pork Roast',
-      description: "short description",
-      category: "dinner",
-      difficulty:'easy',
-      hands_on: 20,
-      served: 4,
-      ingredients:['tomato', 'oinions'],
-      directions:['step1', 'ste2'],
-      owner: 'userName',
-      image_url: 'https://www.kroger.com/asset/5a74b5d984ae789fcdcb6044?data=1'
-
-    },
+  
     {
       name: 'Mexican Chili Pie',
       description:'Craving a little something spicy for supper?' 
@@ -163,5 +142,56 @@ export const mealReducer = (state=initialState, action) => {
     })
   }
 
+  if(action.type === actions.CHECKOWNERMEAL){
+    return Object.assign({}, state, {
+      isOwnerMeal: action.isOwnerMeal
+    })
+  }
+
+  if(action.type === actions.SAVE_CURRENT_MEAL_ID){
+    return Object.assign({}, state, {
+      mealId: action.mealId
+    })
+  }
+
+  if(action.type === actions.SAVE_CURRENT_MEAL_SUCCESS){
+    return Object.assign({}, state, {
+      currentMeal: action.currentMeal
+    })
+  }
+
+  if(action.type === actions.SAVE_CURRENT_MEAL_FAILURE){
+    return Object.assign({}, state, {
+      error: action.error
+    })
+  }
+
+  if(action.type === actions.UPDATEMEAL_SUCCESS){
+    return Object.assign({}, state, {
+      success: action.success,
+      error: null
+    })
+  }
+
+  if(action.type === actions.UPDATEMEAL_FAILURE){
+    return Object.assign({}, state, {
+      error: action.error,
+      success: false
+    })
+  }
+
+  if(action.type === actions.ADDMEAL_SUCCESS){
+    return Object.assign({}, state, {
+      success: action.success,
+      error: null
+    })
+  }
+
+  if(action.type === actions.ADDMEAL_FAILURE){
+    return Object.assign({}, state, {
+      error: action.error,
+      success: false
+    })
+  }
   return state;
 }

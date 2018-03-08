@@ -1,9 +1,15 @@
 .category{
-  width: 50%;
   margin:0 auto;
   text-align: left;
 }
+.filterClass{
+  text-align: left;
+}
 
+
+@media only screen and (max-width: 768px){
+  
+}
 /*checked={this.props.isCheckedBreakfast}
       checked={this.props.isCheckedLunch}
       checked={this.props.isCheckedDinner}*/

@@ -7,6 +7,8 @@ import RegistrationPage from './registration_page';
 import LoginPage from './loginPage';
 import AddMealPage from './addMealPage';
 import ViewsRecipes from './viewsRecipes';
+import MealOwnerPage from './mealOwnerPage'
+import UpdateMealPage from './updateMealPage';
 
 import {MainMenu} from './mainMenu';
 import {refreshAuthToken} from '../actions/auth';
@@ -51,7 +53,9 @@ export class App extends React.Component {
           <div className="main">
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/home" component={Dashboard} />
+            <Route exact path="/home/:username" component={MealOwnerPage} />
             <Route exact path="/home/:mealId/:mealIndex" component={ViewsRecipes} />
+            <Route exact path="/update/:mealId" component={UpdateMealPage} />
             <Route exact path='/register' component={RegistrationPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/addmeal' component={AddMealPage} />

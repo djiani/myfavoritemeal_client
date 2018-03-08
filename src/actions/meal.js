@@ -32,9 +32,10 @@ export const addmeal = (meal) =>dispatch => {
     body: JSON.stringify(meal)
     })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
+    .then(res => dispatch(addMealSuccess(true)))
     .catch(err => {
         const {reason, message, location} = err;
+        dispatch(addMealFailure(err))
         if (reason === 'ValidationError') {
             // Convert ValidationErrors into SubmissionErrors for Redux Form
           return Promise.reject(
@@ -46,6 +47,19 @@ export const addmeal = (meal) =>dispatch => {
     }
   );
 }
+
+export const ADDMEAL_SUCCESS = 'ADDMEAL_SUCCESS';
+export const addMealSuccess = (success)=>({
+  type: ADDMEAL_SUCCESS,
+  success
+});
+
+export const ADDMEAL_FAILURE = 'ADDMEAL_FAILURE';
+export const addMealFailure = (error)=>({
+  type: ADDMEAL_FAILURE,
+  error
+});
+
   
 
 export const BREAKFAST_CHECKED = 'BREAKFAST_CHECKED';
@@ -102,4 +116,68 @@ export const SEARCH_MEALS = 'SEARCH_MEALS';
 export const searchMeals = (searchTerm)=> ({
   type: SEARCH_MEALS,
   searchTerm
+});
+
+export const CHECKOWNERMEAL = 'CHECKOWNERMEAL';
+export const checkOwnerMeal = (isOwnerMeal)=> ({
+  type: CHECKOWNERMEAL,
+  isOwnerMeal
+});
+
+
+export const SAVE_CURRENT_MEAL_ID = 'SAVE_CURRENT_MEAL_ID';
+export const saveCurrentMealId = (mealId)=>({
+  type: SAVE_CURRENT_MEAL_ID,
+  mealId,
+});
+
+export const SAVE_CURRENT_MEAL_SUCCESS = 'SAVE_CURRENT_MEAL_SUCCESS';
+export const saveCurrentMealSuccess = (currentMeal)=>({
+  type: SAVE_CURRENT_MEAL_SUCCESS,
+  currentMeal
+});
+
+export const SAVE_CURRENT_MEAL_FAILURE = 'SAVE_CURRENT_MEAL_FAILURE';
+export const saveCurrentMealFailure = (error)=>({
+  type: SAVE_CURRENT_MEAL_FAILURE,
+  error
+});
+
+//update meal
+export const updateMeal = (meal, mealId) =>dispatch => {
+  dispatch(updateMealFailure(null)); //clear error message;
+  return fetch(`${API_BASE_URL}/meals/${mealId}`, {
+    method: 'PUT',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify(meal)
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => dispatch(updateMealSuccess(true)))
+    .catch(err => {
+        const {reason, message, location} = err;
+        dispatch(updateMealFailure(err));
+        if (reason === 'ValidationError') {
+            // Convert ValidationErrors into SubmissionErrors for Redux Form
+          return Promise.reject(
+            new SubmissionError({
+                [location]: message
+            })
+          );
+        }
+    }
+  );
+}
+
+export const UPDATEMEAL_SUCCESS = 'UPDATEMEAL_SUCCESS';
+export const updateMealSuccess = (success)=>({
+  type: UPDATEMEAL_SUCCESS,
+  success
+});
+
+export const UPDATEMEAL_FAILURE = 'UPDATEMEAL_FAILURE';
+export const updateMealFailure = (error)=>({
+  type: UPDATEMEAL_FAILURE,
+  error
 });

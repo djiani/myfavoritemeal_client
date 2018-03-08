@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import Input from './input';
+import RenderField from './renderField';
 
 import {required, nonEmpty} from '../validators';
 import {API_BASE_URL} from '../config';
@@ -31,29 +31,31 @@ export class SearchForm extends React.Component {
       
  
   render() {
-    const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-      <div >
-        <label>{label}</label>
-        <div>
-          <input {...input} type={type} placeholder={placeholder} className="input_length"/>
-          {touched && error && <span>{error}</span>}
-        </div>
-      </div>
-    );
+    // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+    //   <div>
+    //     <label>{label}</label>
+    //     <div>
+    //       <input {...input} type={type} placeholder={placeholder} className="input_length"/>
+    //       {touched && error && <span>{error}</span>}
+    //     </div>
+    //   </div>
+    // );
 
     return (
       
         <form className="search-form" onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values) )} >
             <Field 
-              component= {renderField}
+              component= {RenderField}
               name="searchRecipes"
               type="text"
               label= "Search Recipes"
+              className="input_length_2"
+              validate={[required, nonEmpty]}
               />
 
             
-            <button disabled={this.props.pristine || this.props.submitting} className="search_btn"> Search </button>
+            <button disabled={this.props.pristine || this.props.submitting} className="submit_button"> Search </button>
         </form>
     );
     

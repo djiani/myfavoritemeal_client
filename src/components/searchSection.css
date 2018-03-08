@@ -1,8 +1,23 @@
 .searchSection{
   display: inline-block;
   vertical-align: top;
-  width: 23%;
   height: 100%;
+  width: 100%;
   border-right: 1px solid black;
 
+}
+
+.filterClass{
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px){
+  .searchSection{
+    border-right: none;
+    border-bottom: 2px solid black;
+
+  }
+  .category{
+    display:inline;
+  }
 }

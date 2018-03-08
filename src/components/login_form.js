@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 
 import {login} from '../actions/auth';
+import RenderField from './renderField';
 import {required, nonEmpty} from '../validators';
 
 
@@ -22,15 +23,15 @@ export class LoginForm extends React.Component {
             );
         }
 
-        const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-          <div >
-            <label>{label} {touched && error && <span className="error">{error}</span>}</label>
-            <div>
-              <input {...input} type={type} placeholder={placeholder} className="input_length"/>
+        // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+        //   <div >
+        //     <label>{label} {touched && error && <span className="error">{error}</span>}</label>
+        //     <div>
+        //       <input {...input} type={type} placeholder={placeholder} className="input_length"/>
               
-            </div>
-          </div>
-        );
+        //     </div>
+        //   </div>
+        // );
 
         return (
             <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values) )} >
@@ -40,18 +41,20 @@ export class LoginForm extends React.Component {
                 <Field
                   name="username"
                   type="text"
-                  component={renderField}
+                  component={RenderField}
                   label="Username"
                   id="username"
+                  className="input_length"
                   validate={[required, nonEmpty]}
                 />
 
                 <Field
                   name="password"
                   type="password"
-                  component={renderField}
+                  component={RenderField}
                   label="Password"
                   id="password"
+                  className="input_length"
                   validate={[required, nonEmpty]}
                 />
                 <button disabled={this.props.pristine || this.props.submitting} className="submit_button">

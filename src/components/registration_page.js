@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import RegistrationForm from './registration_form';
 import './registration_page.css';
 
 export function RegistrationPage(props){
   if(props.loggedIn){
-    return <Redirect to="/home" />
+    props.history.push('/home');
   }
 
   return (

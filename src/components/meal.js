@@ -11,12 +11,14 @@ export class Meal extends React.Component{
     
     return (
       <div className="meal">
-        <div>
+        <div className="image_meal_block">
           <img src={this.props.meal.image_url} alt={this.props.meal.name} className="image_meal"/>
         </div>
         
         <div>
-          <h4 className="meal_name"> {this.props.meal.name} </h4>
+          <div className="meal_name">
+            <label> {this.props.meal.name} </label>
+          </div>
           <ul className="well2">
             <li> Difficulty: <span className="text_bold">{this.props.meal.difficulty}</span></li>
             <li> Time: <span className="text_bold">{this.props.meal.hands_on} minutes </span></li>

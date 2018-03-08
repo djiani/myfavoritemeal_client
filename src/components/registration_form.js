@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
+import RenderField from './renderField';
 
 import './registration_form.css';
 
@@ -21,53 +22,60 @@ export class RegistrationForm extends React.Component {
 
     render() {
 
-        const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-          <div >
-            <label>{label} {touched && error && <span className="error">{error}</span>}</label>
-            <div>
-              <input {...input} type={type} placeholder={placeholder} className="input_length"/>
+        // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
+        //   <div >
+        //     <label>{label} {touched && error && <span className="error">{error}</span>}</label>
+        //     <div>
+        //       <input {...input} type={type} placeholder={placeholder} className="input_length"/>
               
-            </div>
-          </div>
-        );
+        //     </div>
+        //   </div>
+        // );
 
         return (
             <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values) )} >
                <Field
                   name="firstName"
                   type="text"
-                  component={renderField}
+                  component={RenderField}
                   label="FirstName"
+                  validate={[required, nonEmpty]}
+                  className="input_length"
                 />
                 
                 <Field
                   name="lastName"
                   type="text"
-                  component={renderField}
+                  component={RenderField}
                   label="LastName"
+                  validate={[required, nonEmpty]}
+                  className="input_length"
                 />
                 
                 <Field
                   name="username"
                   type="text"
-                  component={renderField}
+                  component={RenderField}
                   label="Username"
                   validate={[required, nonEmpty, isTrimmed]}
+                  className="input_length"
                 />
 
                 <Field
                   name="password"
                   type="password"
-                  component={renderField}
+                  component={RenderField}
                   label="Password"
                   validate={[required, passwordLength, isTrimmed]}
+                  className="input_length"
                 />
                 <Field
                   name="passwordConfirm"
                   type="password"
-                  component={renderField}
+                  component={RenderField}
                   label="Confirm Password"
                   validate={[required, nonEmpty, matchesPassword]}
+                  className="input_length"
                 />
                 <button
                     type="submit"

@@ -28,7 +28,7 @@ export class MainMenu extends React.Component{
     console.log(this.props);
     if(this.props.props.loggedIn){ 
       navMenu = ( 
-        <Navbar inverse collapseOnSelect>
+        <Navbar inverse collapseOnSelect className="navbar">
           <Navbar.Header>
             <Navbar.Brand>
               <Link to='/'>MyFavoriteMeal </Link>
@@ -37,7 +37,7 @@ export class MainMenu extends React.Component{
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav  onSelect= {eventKey =>this.handleOnSelectLeft(eventKey)} >
-              <NavItem eventKey={1} href="addmeal" >
+              <NavItem eventKey={1} href="/addmeal" >
                AddMeal
               </NavItem>
               <NavItem eventKey={2} href={`/home/${this.props.currentUser.username}`} >
@@ -45,13 +45,9 @@ export class MainMenu extends React.Component{
               </NavItem>
             </Nav>
             <Nav pullRight  onSelect={eventKey =>this.handleOnSelectRight(eventKey)}>
-              <NavDropdown eventKey={3} title="Account" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.4} disabled> welcome <h4>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</h4></MenuItem>
+              <NavDropdown eventKey={3} title={`Welcome  ${this.props.currentUser.firstName} ${this.props.currentUser.lastName} `} id="basic-nav-dropdown">
                 <MenuItem divider />
-                <MenuItem divider />
-                <MenuItem eventKey={3.1}>profile</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={3.2} >Log out</MenuItem>
+                <MenuItem eventKey={3.2} ><h4>Log out</h4></MenuItem>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -65,7 +61,7 @@ export class MainMenu extends React.Component{
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to='/home'>MyFavoriteMeal </Link>
+            <Link to='/'>MyFavoriteMeal </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

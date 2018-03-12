@@ -25,27 +25,32 @@ function checkControl(props, meal, index){
 
 }
 export function MealList(props){
+  let listMeal =[];
+if(props.meals === []){
+    listMeal = ['No data found!'];
+  }else{
+    listMeal = props.meals.map((meal, index) => { 
+      if(props.breakfastChecked && meal.category === 'breakfast'){
+        return checkControl(props, meal, index)
+        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+      }
+      else if(props.lunchChecked && meal.category === 'lunch'){
+        return checkControl(props, meal, index)
+        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+      }
+      else if(props.dinnerChecked && meal.category === 'dinner'){
+        return checkControl(props, meal, index)
+        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+      }
+      else if(!props.breakfastChecked && !props.lunchChecked && !props.dinnerChecked){
 
-  const listMeal = props.meals.map((meal, index) => { 
-    if(props.breakfastChecked && meal.category === 'breakfast'){
-      return checkControl(props, meal, index)
-      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-    }
-    else if(props.lunchChecked && meal.category === 'lunch'){
-      return checkControl(props, meal, index)
-      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-    }
-    else if(props.dinnerChecked && meal.category === 'dinner'){
-      return checkControl(props, meal, index)
-      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-    }
-    else if(!props.breakfastChecked && !props.lunchChecked && !props.dinnerChecked){
-
-      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-      return checkControl(props, meal, index)
-    }
-    return [];
-  });
+        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+        return checkControl(props, meal, index)
+      }
+      return [];
+    });
+ }
+  
 
   return (
     <div className = "mealList">

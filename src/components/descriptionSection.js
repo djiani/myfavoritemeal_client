@@ -3,15 +3,24 @@ import './descriptionSection.css';
 export default function DescriptionSection(props){
   return (
     <div className="descriptionSection">
+      
+      <div className='description_text'> 
+        <h1 className="text_effect"> Experience My Favorite Meal</h1>
+        <div className="well well-lg block_text">
+
+          <p> MyFavoriteMeal is a social platform where users can share their food habits and preferences. 
+          This web platform is developed principally 
+          to inspire and to teach culinary novices and promote the food out there. 
+          With the recipes and directions provided, anyone can trying by himself to make something new, 
+          quick and fast at his own space and time.
+          </p>
+          <q>If you really want to make a friend, go to someone's house and eat with him.
+           The people who give you their food give you their heart - Cesar Chavez</q>
+        </div>
+        <h2 className="text_effect">Enjoy your Meal!!</h2>
+      </div>
       <div className='image_block'>
         <img src="http://www.mealpreppies.com/wp-content/uploads/2015/09/meal-prep-sunday.jpg" alt="logo" className='image_desc'/>
-      </div>
-      <div className='description_text'> 
-        <h1> Experience My Favorite Meal</h1>
-        <p> MyFavorite Meals helps you sharing your taste for food with the reste of the world and helps 
-          inpirate others about the best plat out there who might be out of mind to what to eat or 
-          who might have hard time to choose or order food or what to make for breakfast, lunch, dinner
-        </p>
       </div>
     </div>
   )

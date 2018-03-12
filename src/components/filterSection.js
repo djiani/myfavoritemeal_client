@@ -36,25 +36,19 @@ export class FilterSection extends React.Component{
   render(){ 
   return (
     <div className="filterClass">
-    
-      <div className="category">
-        <h4> Filter by Categories</h4>
+      <div className="category alignLeft">
+        <h3> Filter by Categories</h3>
         <label><input name="breakfast" type="checkbox" onChange={ () =>this.handleCheckBox('breakfast')}/> Breakfast</label><br/>
         <label><input name="lunch" type="checkbox"  onChange={ () =>this.handleCheckBox('lunch')} /> Lunch</label><br/>
         <label><input name="dinner" type="checkbox" onChange={ () =>this.handleCheckBox('dinner')} /> Dinner</label><br/>
       </div>
 
-      <div className="category">
-        <h4> Filter by Difficulty</h4>
+      <div className="category alignRight">
+        <h3> Filter by Difficulty</h3>
         <label><input name="easy" type="checkbox" onChange={ () =>this.handleCheckBox('easy')}/> Easy</label><br/>
         <label><input name="intermediate" type="checkbox"  onChange={ () =>this.handleCheckBox('intermediate')} /> Intermediate</label><br/>
         <label><input name="difficult" type="checkbox" onChange={ () =>this.handleCheckBox('difficult')} /> Difficult</label><br/>
       </div>
-
-      <div> 
-
-      </div>
-
 
     </div>
 

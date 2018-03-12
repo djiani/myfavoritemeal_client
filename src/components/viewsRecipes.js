@@ -72,11 +72,11 @@ export class ViewsRecipes extends React.Component{
           <h3> Description </h3>
             <p>{this.props.meals[indexMeal].description} </p>
             <ul>
-              <li> <span className="infoElt">Category </span>: {this.props.meals[indexMeal].category}</li>
-              <li> <span className="infoElt">Difficulty </span>: {this.props.meals[indexMeal].difficulty}</li>
-              <li> <span className="infoElt">Hands_on </span>: {this.props.meals[indexMeal].hands_on} munites</li>
-              <li> <span className="infoElt">Served </span>: {this.props.meals[indexMeal].served} </li>
-              <li> <span className="infoElt">Posted by </span>: {this.props.meals[indexMeal].owner} </li>
+              <li> Category : <span className="infoElt">{this.props.meals[indexMeal].category}</span></li>
+              <li> Difficulty :<span className="infoElt"> {this.props.meals[indexMeal].difficulty}</span></li>
+              <li> Hands_on : <span className="infoElt">{this.props.meals[indexMeal].hands_on} munites</span></li>
+              <li> Served :<span className="infoElt"> {this.props.meals[indexMeal].served}</span> </li>
+              <li> Posted by : <span className="infoElt">{this.props.meals[indexMeal].owner}</span> </li>
             </ul>
             <div>
               {DisplayButton}

@@ -26,18 +26,12 @@ export class Meal extends React.Component{
 
           </ul>
         </div>
-        <div>
-          {/*<a href={`#:${this.props.indexMeal}`} >
-          
-           <a  className="like_btn"> 
-           <h2><span class="glyphicon glyphicon-heart-empty "></span></h2>
-           <h2><span class="glyphicon glyphicon-heart"></span></h2>
-
-           </a>
-            //<button className="recipes_btn" onClick={()=>this.handleViewsRecipes(this.props.indexMeal, 'viewsrecipes')} > view recipes</button>
-            */}
-            <Link to={`/home/${this.props.meal.id}/${this.props.indexMeal}`} > viewsrecipes</Link>
+        <div className="recipes_Link_block">
+          <Link to={`/home/${this.props.meal.id}/${this.props.indexMeal}`} > 
+            <span className="recipes_Link">viewsrecipes</span>
+          </Link>
         </div>
+        
       </div>
     );
   }

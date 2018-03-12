@@ -50,10 +50,10 @@ export class DashBoard extends React.Component{
       body= (
         <Grid>
          <Row className="show-grid">
-          <Col xs={12} sm={4}>
+          <Col xs={12} sm={3}>
             <SearchSection />
           </Col>
-          <Col xs={12} sm={8}>
+          <Col xs={12} sm={9}>
             <MealList />
           </Col>
       </Row> 

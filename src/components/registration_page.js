@@ -14,7 +14,7 @@ export function RegistrationPage(props){
     <h2 className="text_effect"> Fill the information below </h2>
       <RegistrationForm />
       <div>
-        Have an already? <Link to="/login"><span className= "link_red">Login</span></Link>
+        Have an account already? <Link to="/login"><span className= "link_red">Login</span></Link>
       </div>
     </div>
   )

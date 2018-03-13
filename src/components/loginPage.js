@@ -12,10 +12,16 @@ export function LoginPage(props) {
 
     return (
         <div className="page_styling">
-            <h2 className="text_effect">Login In</h2>
-            <LoginForm />
 
+            <h2 className="text_effect">Login In</h2>
+
+            <LoginForm />
           <h5>Not have an account yet?  <Link to="/register"><span className="link_red">Register</span></Link></h5>
+            <div>
+                <h4>DEMO ACCOUNT</h4>
+                username: test <br/>
+                password: password123
+            </div>
         </div>
     );
 }

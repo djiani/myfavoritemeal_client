@@ -4,8 +4,8 @@ import DescriptionSection from './descriptionSection';
  
 import {shallow} from 'enzyme';
 
-decribe('<DescriptionSection />', (){
+describe('<DescriptionSection />', ()=>{
   it('renders without crashing', () => {
     shallow(<DescriptionSection/>);
   });
-}
+})

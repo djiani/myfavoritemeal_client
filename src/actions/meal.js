@@ -2,6 +2,7 @@ import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const addIngredient = (ingredient) => ({
   type: ADD_INGREDIENT,
@@ -22,8 +23,8 @@ export const addDirection = (direction) => ({
 // });
 
 
-
-export const addmeal = (meal) =>dispatch => {
+//add new meal action
+export const addmeal = (meal) => dispatch => {
   return fetch(`${API_BASE_URL}/meals`, {
     method: 'POST',
     headers: {
@@ -61,7 +62,7 @@ export const addMealFailure = (error)=>({
 });
 
   
-
+//search filter action
 export const BREAKFAST_CHECKED = 'BREAKFAST_CHECKED';
 export const breakfastchecked = ()=>({
   type: BREAKFAST_CHECKED,
@@ -94,6 +95,32 @@ export const difficultchecked = ()=>({
   type: DIFFICULT_CHECKED,
 });
 
+//fectch meal from the db
+export const loadMealData = () => dispatch => {
+  console.log('loadMealData call!');
+    return fetch(`${API_BASE_URL}/meals`)
+    .then(res =>{
+      if(!res.ok){
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(meals => {
+      console.log(meals)
+      dispatch(loadMealDataSuccess(meals)); 
+    })
+    .catch(err =>{ 
+      console.log(err)
+      dispatch(loadMealDataFailure(err))
+    });
+
+}
+//check if meals data being loaded, set loading to true
+export const LOADMEALDATA_FETCH = 'LOADMEALDATA_FETCH';
+export const loadMealDataFetch = ()=>({
+  type: LOADMEALDATA_FETCH
+
+})
 export const LOADMEALDATA_SUCCESS = 'LOADMEALDATA_SUCCESS';
 export const loadMealDataSuccess = (meals)=>({
   type: LOADMEALDATA_SUCCESS,
@@ -106,12 +133,14 @@ export const loadMealDataFailure = (err)=>({
   err
 });
 
+//maybe not useful
 export const USER_LOGIN = 'USER_LOGIN';
 export const userlogin = (userlogin)=> ({
   type: USER_LOGIN,
   userlogin
 });
 
+//don't need this action
 export const SEARCH_MEALS = 'SEARCH_MEALS';
 export const searchMeals = (searchTerm)=> ({
   type: SEARCH_MEALS,
@@ -144,7 +173,7 @@ export const saveCurrentMealFailure = (error)=>({
 });
 
 //update meal
-export const updateMeal = (meal, mealId) =>dispatch => {
+export const updateMeal = (meal, mealId) => dispatch => {
   dispatch(updateMealFailure(null)); //clear error message;
   return fetch(`${API_BASE_URL}/meals/${mealId}`, {
     method: 'PUT',

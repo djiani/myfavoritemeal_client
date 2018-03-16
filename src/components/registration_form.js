@@ -14,6 +14,7 @@ export class RegistrationForm extends React.Component {
     onSubmit(values) {
         const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
+        console.log('checking onSubmit new user...')
         console.log(user);
         return this.props
             .dispatch(registerUser(user))
@@ -91,3 +92,5 @@ export default reduxForm({
     form: 'registration',
     onSubmitFail: (errors, dispatch) => dispatch(focus('registration', Object.keys(errors)[0]))
 })(RegistrationForm);
+
+ 

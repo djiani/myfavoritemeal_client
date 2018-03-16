@@ -54,14 +54,14 @@ export const mealReducer = (state=initialState, action) => {
   if(action.type === actions.ADD_INGREDIENT){
     return Object.assign({}, state, {
       currentMeal: {
-        ingredients: [...state.ingredients, action.ingredient]
+        ingredients: [...state.currentMeal.ingredients, action.ingredient]
       }
     })
   }
   if(action.type === actions.ADD_DIRECTION){
     return Object.assign({}, state, {
       currentMeal: {
-        directions: [...state.directions, action.direction]
+        directions: [...state.currentMeal.directions, action.direction]
       }
     })
   }
@@ -112,6 +112,12 @@ export const mealReducer = (state=initialState, action) => {
   if(action.type === actions.DIFFICULT_CHECKED){
     return Object.assign({}, state, {
         difficultChecked: !state.difficultChecked
+    })
+  }
+  if(action.type === actions.LOADMEALDATA_FETCH){
+    return Object.assign({}, state, {
+      loading: true,
+      error: null
     })
   }
   if(action.type === actions.LOADMEALDATA_SUCCESS){

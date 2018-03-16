@@ -20,15 +20,10 @@ export class MainMenu extends React.Component{
     }
   }
 
- 
-  
-  
-  render(){ 
-    let navMenu = '';
-    console.log(this.props);
-    if(this.props.props.loggedIn){ 
-      navMenu = ( 
-        <Navbar inverse collapseOnSelect className="navbar">
+  navMenu(){
+  if(this.props.props.loggedIn){
+    return (
+      <Navbar inverse collapseOnSelect className="navbar">
           <Navbar.Header>
             <Navbar.Brand>
               <Link to='/'>MyFavoriteMeal </Link>
@@ -51,13 +46,10 @@ export class MainMenu extends React.Component{
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
-
-      );
-
-    }
-    else{ 
-     navMenu = (
+        </Navbar>)
+  }
+  else{
+    return(
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
@@ -77,9 +69,16 @@ export class MainMenu extends React.Component{
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )}
-
-     return navMenu;
+    )
+  }
+} 
+  
+  render(){ 
+    return (
+      <div>
+        {this.navMenu()}
+      </div>
+    )
   }
 }
 

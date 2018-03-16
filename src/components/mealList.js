@@ -24,37 +24,45 @@ function checkControl(props, meal, index){
   }
 
 }
-export function MealList(props){
-  let listMeal =[];
-if(props.meals === []){
-    listMeal = ['No data found!'];
-  }else{
-    listMeal = props.meals.map((meal, index) => { 
-      if(props.breakfastChecked && meal.category === 'breakfast'){
-        return checkControl(props, meal, index)
-        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-      }
-      else if(props.lunchChecked && meal.category === 'lunch'){
-        return checkControl(props, meal, index)
-        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-      }
-      else if(props.dinnerChecked && meal.category === 'dinner'){
-        return checkControl(props, meal, index)
-        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-      }
-      else if(!props.breakfastChecked && !props.lunchChecked && !props.dinnerChecked){
 
-        //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
-        return checkControl(props, meal, index)
-      }
-      return [];
-    });
+//check if listMeal element is equal to null. 
+function filterArray(elt){
+  return elt === null;
+}
+
+export function MealList(props){
+  let listMealData = [];
+  const listMeal = props.meals.map((meal, index) => { 
+    if(props.breakfastChecked && meal.category === 'breakfast'){
+      return checkControl(props, meal, index)
+      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+    }
+    else if(props.lunchChecked && meal.category === 'lunch'){
+      return checkControl(props, meal, index)
+      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+    }
+    else if(props.dinnerChecked && meal.category === 'dinner'){
+      return checkControl(props, meal, index)
+      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+    }
+    else if(!props.breakfastChecked && !props.lunchChecked && !props.dinnerChecked){
+
+      //return (<Meal meal= {meal} indexMeal={index} key={index}  />);
+      return checkControl(props, meal, index)
+    }
+    return null;
+  });
+ 
+ if(listMeal.every(filterArray)) {
+  listMealData = (<div>'No Data Found!!!'</div>);
+ }else{
+  listMealData = listMeal;
  }
   
 
   return (
     <div className = "mealList">
-      {listMeal};
+      {listMealData};
     </div>
   );
 

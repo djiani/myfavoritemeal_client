@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import MealList from './mealList';
 import SearchSection from './searchSection';
 //import {API_BASE_URL} from '../config';
-import {loadMealData, checkOwnerMeal, loadMealDataFetch} from '../actions/meal';
+import {loadMealData, loadMealDataFetch} from '../actions/meal';
 import {Grid, Row, Col} from 'react-bootstrap';
 
 //import AddMeal from './addMeal';
@@ -16,7 +16,7 @@ export class DashBoard extends React.Component{
     //reset ownership to false to load all meal
     this.props.dispatch(loadMealDataFetch());
     this.sleep(1000).then(()=> {
-      this.props.dispatch(checkOwnerMeal(false));
+      //this.props.dispatch(checkOwnerMeal(false));
       this.props.dispatch(loadMealData());
     })
     
@@ -80,8 +80,8 @@ export class DashBoard extends React.Component{
 
 const mapStateToProps = state => { 
     return {
-        indexMeal: state.meal.indexMeal, 
-        viewsrecipes: state.meal.viewsrecipes,
+        //indexMeal: state.meal.indexMeal, 
+        //viewsrecipes: state.meal.viewsrecipes,
         loading: state.meal.loading,
         error: state.meal.error,
         meals: state.meal.meals

@@ -128,31 +128,52 @@ export const loadMealDataSuccess = (meals)=>({
 });
 
 export const LOADMEALDATA_FAILURE = 'LOADMEALDATA_FAILURE';
-export const loadMealDataFailure = (err)=>({
+export const loadMealDataFailure = (error)=>({
   type: LOADMEALDATA_FAILURE,
-  err
+  error
 });
 
 //maybe not useful
-export const USER_LOGIN = 'USER_LOGIN';
-export const userlogin = (userlogin)=> ({
-  type: USER_LOGIN,
-  userlogin
-});
+// export const USER_LOGIN = 'USER_LOGIN';
+// export const userlogin = (userlogin)=> ({
+//   type: USER_LOGIN,
+//   userlogin
+// });
 
 //don't need this action
-export const SEARCH_MEALS = 'SEARCH_MEALS';
-export const searchMeals = (searchTerm)=> ({
-  type: SEARCH_MEALS,
-  searchTerm
-});
+// export const SEARCH_MEALS = 'SEARCH_MEALS';
+// export const searchMeals = (searchTerm)=> ({
+//   type: SEARCH_MEALS,
+//   searchTerm
+// });
 
-export const CHECKOWNERMEAL = 'CHECKOWNERMEAL';
-export const checkOwnerMeal = (isOwnerMeal)=> ({
-  type: CHECKOWNERMEAL,
-  isOwnerMeal
-});
+// export const CHECKOWNERMEAL = 'CHECKOWNERMEAL';
+// export const checkOwnerMeal = (isOwnerMeal)=> ({
+//   type: CHECKOWNERMEAL,
+//   isOwnerMeal
+// });
 
+
+//fect meal owner from db
+export const loadMealDataOwner = (username) => dispatch => {
+  return fetch(`${API_BASE_URL}/meals/mymeal/${username}`)
+        .then(res =>{
+          if(!res.ok){
+            return Promise.reject(res.statusText);
+          }
+         // console.log(res.json())
+          return res.json();
+        })
+        .then(meals => {
+          //console.log(meals)
+          dispatch(loadMealDataSuccess(meals)); 
+        })
+        .catch(err =>{ 
+          //console.log(err)
+          dispatch(loadMealDataFailure(err))
+
+        });
+}
 
 export const SAVE_CURRENT_MEAL_ID = 'SAVE_CURRENT_MEAL_ID';
 export const saveCurrentMealId = (mealId)=>({

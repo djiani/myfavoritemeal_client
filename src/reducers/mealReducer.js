@@ -4,14 +4,14 @@ const initialState = {
   error: null,
   loading: false,
   success: false,
-  userlogin: false,
+  //userlogin: false,
   breakfastChecked: false,
   lunchChecked: false,
   dinnerChecked: false,
   easyChecked: false,
   intermedChecked: false,
   difficultChecked: false,
-  isOwnerMeal: false,
+  //isOwnerMeal: false,
   mealID: '',
 
   meals: [
@@ -114,6 +114,7 @@ export const mealReducer = (state=initialState, action) => {
         difficultChecked: !state.difficultChecked
     })
   }
+  //load meal from db
   if(action.type === actions.LOADMEALDATA_FETCH){
     return Object.assign({}, state, {
       loading: true,
@@ -135,24 +136,26 @@ export const mealReducer = (state=initialState, action) => {
     });
   }
 
-  if(action.type === actions.USER_LOGIN){
-    return Object.assign({}, state, {
-      userlogin: true
-    })
-  }
+// //maybe don't need this one
+//   if(action.type === actions.USER_LOGIN){
+//     return Object.assign({}, state, {
+//       userlogin: true
+//     })
+//   }
 
-//don't need search_meals
-  if(action.type === actions.SEARCH_MEALS){
-    return Object.assign({}, state, {
-      userlogin: true
-    })
-  }
+// //don't need search_meals
+//   if(action.type === actions.SEARCH_MEALS){
+//     return Object.assign({}, state, {
+//       userlogin: true
+//     })
+//   }
 
-  if(action.type === actions.CHECKOWNERMEAL){
-    return Object.assign({}, state, {
-      isOwnerMeal: action.isOwnerMeal
-    })
-  }
+// //don't meal this
+//   if(action.type === actions.CHECKOWNERMEAL){
+//     return Object.assign({}, state, {
+//       isOwnerMeal: action.isOwnerMeal
+//     })
+//   }
 
   if(action.type === actions.SAVE_CURRENT_MEAL_ID){
     return Object.assign({}, state, {

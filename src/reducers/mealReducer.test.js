@@ -1,21 +1,19 @@
 import {mealReducer} from './mealReducer';
 
 import {addDirection, addIngredient, breakfastchecked, lunchchecked, dinnerchecked,
-  easychecked, intermedchecked, difficultchecked} from '../actions/meal';
+  easychecked, intermedchecked, difficultchecked, loadMealDataFetch, loadMealDataSuccess, loadMealDataFailure} from '../actions/meal';
 
 describe('mealReducer', ()=>{
  const initialState = {
   error: null,
   loading: false,
   success: false,
-  userlogin: false,
   breakfastChecked: false,
   lunchChecked: false,
   dinnerChecked: false,
   easyChecked: false,
   intermedChecked: false,
   difficultChecked: false,
-  isOwnerMeal: false,
   mealID: '',
 
   meals: [
@@ -170,4 +168,33 @@ describe('mealReducer', ()=>{
       expect(state.difficultChecked).toEqual(false);
     })
   })
+
+  describe('loadMeal', ()=>{
+    it('should set loading when in process to fetch data', ()=>{
+      let state = initialState
+      state = mealReducer(state, loadMealDataFetch());
+      expect(state.loading).toEqual(true);
+      expect(state.error).toEqual(null);
+    })
+
+    it('should set meal state on loadmeal success', ()=>{
+      let state = initialState
+      let meals = []
+      state = mealReducer(state, loadMealDataSuccess(meals));
+      expect(state.loading).toEqual(false);
+      expect(state.error).toEqual(null);
+      expect(state.meals).toEqual(meals);
+    })
+
+    it('should set error on loadmeal failure', ()=>{
+      let state = initialState;
+      let error = 'error occured';
+      state = mealReducer(state, loadMealDataFailure(error));
+      expect(state.loading).toEqual(false);
+      expect(state.error).toEqual(error);
+      expect(state.meals).toEqual(initialState.meals);
+    })
+  })
+
+  
 })

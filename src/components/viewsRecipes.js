@@ -28,7 +28,7 @@ export class ViewsRecipes extends React.Component{
     .then(res =>{
       console.log(res);
       alert(`Meal id= ${this.props.match.params.mealId} has been successfully delete`);
-      return this.props.history.push('/home');
+      return this.props.history.push(`/home/${this.props.currentUser.username}` );
     })
     .catch(err => {
         alert(`Ouuppps!!!!, This item cannot been delete!!!!`);

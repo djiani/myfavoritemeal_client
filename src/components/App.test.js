@@ -9,9 +9,5 @@ describe('<App />', ()=>{
     shallow(<App/>);
   });
 
-  // it('should render children when passed it', ()=>{
-  //   const wrapper = shallow(<App />);
-  //   expect(wrapper.hasClass('App-header')).toEqual(true);
-  // })
 
 })

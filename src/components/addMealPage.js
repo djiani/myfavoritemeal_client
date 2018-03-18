@@ -8,16 +8,7 @@ import './addMealPage.css';
 
 
 export class AddMealPage extends React.Component{
-  // componentWillUpdate(){
-  //   if(this.props.success){
-  //     alert('new meal item successfully added!! Go back to home page' );
-  //     this.props.history.push("/home");
-  //   }
-  //   if(this.props.error){
-  //     alert(this.props.error)
-  //   }
-  // }
-
+  
   showResults(values){
     console.log(values);
     if(this.props.currentUser ){
@@ -28,21 +19,35 @@ export class AddMealPage extends React.Component{
     }
 
     this.props.dispatch(addmeal(values))
-    alert('new meal item successfully added!! Go back to home page' );
-    this.props.history.push("/home");
+    
+   
   }
 
   render(){
-    // let error;
-    // if(this.props.error){
-    //     error = (
-    //       <div> {this.props.error} </div>
-    //     )
-    // }
+    let error;
+    if(this.props.error){
+       return(
+        <div> 
+          <h1> oupppss!!!, something wrong occured </h1>
+          {this.props.error} 
+          <h2> <a href='/home'> Go back to home page</a> </h2>
+        </div>)
+        
+    }
+
+    if(this.props.success){
+     return (
+      <div>
+        <h1> New meal successfully added!!! </h1>
+        <h2> <a href='/home'> Go back to home page</a> </h2>
+      </div>)
+    }
+
     return (
         <div className='page_styling'>
-
+          {error}
           <AddMealForm onSubmit={values => this.showResults(values)} />
+          }
     
         </div>
     )

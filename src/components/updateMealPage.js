@@ -20,7 +20,7 @@ export class UpdateMealPage extends React.Component{
 
   componentDidMount(){
     if(!this.props.meal_id){
-      alert("ouppps!!!!, something went wrong! /n Go back to home page");
+      alert("ouppps!!!!, something went wrong! Go back to the home page");
       this.props.history.push('/home');
     }else{ 
       fetch(`${API_BASE_URL}/meals/meal/${this.props.meal_id}`)
@@ -55,21 +55,32 @@ export class UpdateMealPage extends React.Component{
     }else{
       values.owner.username = '';
     }
-    //update meal item
+    
+    // console.log('check values before dispatch updateMeal')
+    // console.log(values);
     this.props.dispatch(updateMeal(values, this.props.meal_id))
-    if(this.props.success){
-      alert("Item successfully update /n click Ok to return to home Page!");
-      this.props.history.push("/home");
-    }
-    if(this.props.error){
-      alert("oupps !!!, unable to update this item!!!!");
-    }
-   
+    
   }
 
 
   render(){
-    
+    if(this.props.error){
+       return(
+        <div> 
+          <h1> oupppss!!!, something wrong occured </h1>
+          {this.props.error} 
+         <h2> <a href={`/home/${this.props.currentUser.username}`}> Go back </a> </h2>
+        </div>)
+        
+    }
+
+    if(this.props.success){
+     return (
+      <div>
+        <h1> Meal successfully update </h1>
+        <h2> <a href={`/home/${this.props.currentUser.username}`}> Go back </a> </h2>
+      </div>)
+    }
     return (
         <div className='page_styling'>
 

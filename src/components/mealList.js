@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-
 import Meal from './meal';
-import './mealList.css'
+import './mealList.css';
 
 function checkControl(props, meal, index){
   if(props.easyChecked && meal.difficulty === 'easy'){

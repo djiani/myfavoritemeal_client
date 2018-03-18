@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './meal.css';
 
-
 export class Meal extends React.Component{
 
 
@@ -27,9 +26,10 @@ export class Meal extends React.Component{
           </ul>
         </div>
         <div className="recipes_Link_block">
-          <Link to={`/home/${this.props.meal.id}/${this.props.indexMeal}`} > 
-            <span className="recipes_Link">viewsrecipes</span>
-          </Link>
+        
+            <Link to={`/home/${this.props.meal.id}/${this.props.indexMeal}`} > 
+              <span className="recipes_Link">viewsrecipes</span>
+            </Link>
         </div>
         
       </div>

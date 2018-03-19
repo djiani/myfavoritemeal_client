@@ -45,7 +45,6 @@ export class AddMealPage extends React.Component{
 
     return (
         <div className='page_styling'>
-          {error}
           <AddMealForm onSubmit={values => this.showResults(values)} />
           }
     

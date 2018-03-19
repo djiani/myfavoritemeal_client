@@ -25,10 +25,16 @@ export class AddMealForm extends React.Component {
     this.setState({loading: true});
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
-    axios.post(`${API_BASE_URL}/test-upload`, formData, {
+    formData.append('filename', event.target.files[0].name )
+    for(var value of formData.values() ){
+      console.log(value);
+    }
+    
+    axios.post(`${API_BASE_URL}/upload`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
+      
     }).then(response => {
       // handle your response;
       console.log(response);
@@ -44,7 +50,26 @@ export class AddMealForm extends React.Component {
     });
   }
 
+  // handleFileUpload2(event){
+  //   event.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('file', event.target.files[0]);
+  //   fetch(`${API_BASE_URL}/upload/`, {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-type': 'multipart/form-data'
+  //       },
+  //     data: event.target.files[0]
+  //   })
+  //   .then(res =>{
+  //     console.log(res);
+  //   })
+  //   .catch(err => {
+  //    console.log('error ...');   
+  //   })
+  // }
   
+
   onSubmit(values){
     if(this.state.loading){
       alert("Please, wait the the image to load!!!!");

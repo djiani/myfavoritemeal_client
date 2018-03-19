@@ -24,7 +24,7 @@ export class AddMealPage extends React.Component{
   }
 
   render(){
-    let error;
+    //let error;
     if(this.props.error){
        return(
         <div> 

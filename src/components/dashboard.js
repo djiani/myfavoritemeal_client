@@ -5,9 +5,7 @@ import SearchSection from './searchSection';
 //import {API_BASE_URL} from '../config';
 import {loadMealData, loadMealDataFetch} from '../actions/meal';
 import {Grid, Row, Col} from 'react-bootstrap';
-import {deleUserAccount_success} from '../actions/users';
-import {clearAuthToken} from '../local-storage';
-import {clearAuth} from '../actions/auth';
+
 //import AddMeal from './addMeal';
 export class DashBoard extends React.Component{ 
 
@@ -49,7 +47,7 @@ export class DashBoard extends React.Component{
       alert('impossible to delete the account!!')
       this.props.dispatch(deleUserAccount_success(null))
     }*/
-    
+
     if(this.props.error){
       body = (
         <div className="message message-error">errror occured</div>

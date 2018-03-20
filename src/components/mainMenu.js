@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Navbar, NavItem, NavDropdown, Nav, MenuItem} from 'react-bootstrap';
-import {deleteUserAccount} from '../actions/users';
+//import {deleteUserAccount} from '../actions/users';
 import {clearAuthToken} from '../local-storage';
 import {clearAuth} from '../actions/auth';
 import {API_BASE_URL} from '../config';

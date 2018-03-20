@@ -5,14 +5,16 @@ import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
-import { mealReducer } from './reducers/mealReducer'
+import { mealReducer } from './reducers/mealReducer';
+import {usersReducer} from './reducers/users';
 
 const store = createStore (
   combineReducers( {
     form: reduxFormReducer, // mounted under "form"
     auth: authReducer,
     protectedData: protectedDataReducer,
-    meal: mealReducer
+    meal: mealReducer,
+    user: usersReducer
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)

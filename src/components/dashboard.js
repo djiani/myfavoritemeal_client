@@ -5,7 +5,9 @@ import SearchSection from './searchSection';
 //import {API_BASE_URL} from '../config';
 import {loadMealData, loadMealDataFetch} from '../actions/meal';
 import {Grid, Row, Col} from 'react-bootstrap';
-
+import {deleUserAccount_success} from '../actions/users';
+import {clearAuthToken} from '../local-storage';
+import {clearAuth} from '../actions/auth';
 //import AddMeal from './addMeal';
 export class DashBoard extends React.Component{ 
 
@@ -21,9 +23,33 @@ export class DashBoard extends React.Component{
 
   }
   
+  // handleOnClick(event){
+  //   event.preventDefault();
+  //   alert('test click');
+  //   this.props.dispatch(clearAuth());
+  //   clearAuthToken();
+  //   this.props.dispatch(deleUserAccount_success(false))
+  // }
 
   render(){ 
     let body;
+    /*if(this.props.del_success){
+      // alert('we are sorry to see you go!!!');
+      // this.props.dispatch(clearAuth());
+      // clearAuthToken();
+      // this.props.dispatch(deleUserAccount_success(false))
+      return(
+        <div> 
+          <h1> we are sorry to see you go!!! </h1>
+           
+          <h2> <botton onClick={event=>handleOnClick(event)} > Go back to home page</a> </h2>
+        </div>)
+    }
+    if(this.props.del_error){
+      alert('impossible to delete the account!!')
+      this.props.dispatch(deleUserAccount_success(null))
+    }*/
+    
     if(this.props.error){
       body = (
         <div className="message message-error">errror occured</div>
@@ -62,7 +88,9 @@ const mapStateToProps = state => {
         //viewsrecipes: state.meal.viewsrecipes,
         loading: state.meal.loading,
         error: state.meal.error,
-        meals: state.meal.meals
+        meals: state.meal.meals,
+        del_success: state.user.delete_success,
+        del_error: state.user.delete_error
     };
 };
 

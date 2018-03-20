@@ -10,7 +10,7 @@ function checkControl(props, meal, index){
   else if(props.intermedChecked && meal.difficulty === 'intermediate'){
     return (<Meal meal= {meal} indexMeal={index} key={index}  />);
   }
-  else if(props.difficultChecked && meal.difficulty === 'difficult'){
+  else if(props.difficultChecked && meal.difficulty === 'hard'){
     return (<Meal meal= {meal} indexMeal={index} key={index}  />);
   }
 

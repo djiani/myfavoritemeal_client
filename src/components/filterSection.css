@@ -22,6 +22,18 @@
     float: right;
   }
 }
+
+@media only screen and (max-width: 576px){
+  .alignLeft, .alignRight{
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .filterClass{
+    width: 80%;
+  }
+  
+}
 /*checked={this.props.isCheckedBreakfast}
       checked={this.props.isCheckedLunch}
       checked={this.props.isCheckedDinner}*/

@@ -188,9 +188,9 @@ export class AddMealForm extends React.Component {
               {'   '}
             </label>
             <label className="radio_label">
-              <Field name="difficulty" component="input" type="radio" value="hard" validate={[required, nonEmpty]}/>
+              <Field name="difficulty" component="input" type="radio" value="difficult" validate={[required, nonEmpty]}/>
               {' '}
-              Hard
+              Difficult
               {' '}
             </label>
           </div>

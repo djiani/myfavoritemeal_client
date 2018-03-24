@@ -1,12 +1,28 @@
 .welcomeSection{
   margin-top:-20px;
   width: 100%;
-  height: 500px;
-  background-image: url('https://c1.staticflickr.com/5/4060/4553953910_411792ac63.jpg');
+  height: 600px;
+  /*background-image: url('https://c1.staticflickr.com/5/4060/4553953910_411792ac63.jpg');*/
+  background-image: url('http://s1.1zoom.net/big0/718/Knife_Vegetables_Cutting_board_527517_1280x939.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
 }
 
+.wel_block_text{
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 600px;
+}
 .welcome_text{
-  position: relative;
-  top: 20px;
+  position:relative;
+  top: 250px;
+}
+
+@media only screen and (max-width: 576px){
+  .welcome_text{
+    position:relative;
+    top: 150px;
+  }
 }

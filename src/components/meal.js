@@ -28,7 +28,7 @@ export class Meal extends React.Component{
         <div className="recipes_Link_block">
         
             <Link to={`/home/${this.props.meal.id}/${this.props.indexMeal}`} > 
-              <span className="recipes_Link">viewsrecipes</span>
+              <span className="recipes_Link">view recipe</span>
             </Link>
         </div>
         

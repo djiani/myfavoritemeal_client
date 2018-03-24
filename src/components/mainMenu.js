@@ -61,10 +61,10 @@ export class MainMenu extends React.Component{
           <Navbar.Collapse>
             <Nav  onSelect= {eventKey =>this.handleOnSelectLeft(eventKey)} >
               <NavItem eventKey={1} href="/addmeal" >
-               AddMeal
+               Add Meal
               </NavItem>
               <NavItem eventKey={2} href={`/home/${this.props.currentUser.username}`} >
-                MyMeals
+                My Meals
               </NavItem>
             </Nav>
             <Nav pullRight  onSelect={eventKey =>this.handleOnSelectRight(eventKey)}>

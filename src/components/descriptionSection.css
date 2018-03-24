@@ -2,17 +2,40 @@
   width: 100%;
   height: 600px;
 }
-.welcomeSection{
-  padding-top: 2px;
+
+.header_block{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.description_text{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+
+}
+
+.text_block{
+  width: 100%;
+  text-align: justify;
+  font-size: 1.6em;
+  background-color: #EAEDF5;
+  padding-right: 20px;
+  padding-left: 20px;
+  
+}
+
+q{
+  font-style: italic;
+  color: #0247FE;
 }
 
 .image_block{
-
   display: inline-block;
-  width: 40%;
-  height: 80%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  width: 50%;
+  height: 100%;
   float: right;
 }
 
@@ -21,31 +44,9 @@
   height: 100%;
 }
 
-.description_text{
-  display: inline-block;
-  width: 60%;
-  padding-left: 30px;
-  padding-right: 30px;
-
-}
-
-.block_text{
-  margin-top: 20px;
-  text-align: left;
-  font-size: 1.6em;
-  background-color: #EAEDF5;
-  overflow: scroll;
-}
-
-q{
-  font-style: italic;
-  color: #0247FE;
-}
-
-
 
 @media only screen and (max-width: 768px){
-  .image_block, .description_text, .descriptionSection{
+  .image_block, .text_block, .description_text, .descriptionSection{
     width: 100%;
     height: auto;
   }
@@ -54,11 +55,4 @@ q{
     display: block;
   }
 }
-
-@media only screen and (max-width: 992px){
-  .block_text{
-    max-height: 500px;
-    overflow: scroll;
-  }
  
-} 

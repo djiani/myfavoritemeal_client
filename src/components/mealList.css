@@ -10,6 +10,8 @@
   width: 100%;
 }
 
+
+
 @media only screen and (max-width: 768px){
   .mealList{
     border-left:none;

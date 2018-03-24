@@ -10,7 +10,7 @@ function checkControl(props, meal, index){
   else if(props.intermedChecked && meal.difficulty === 'intermediate'){
     return (<Meal meal= {meal} indexMeal={index} key={index}  />);
   }
-  else if(props.difficultChecked && meal.difficulty === 'hard'){
+  else if(props.difficultChecked && meal.difficulty === 'difficult'){
     return (<Meal meal= {meal} indexMeal={index} key={index}  />);
   }
 
@@ -51,11 +51,11 @@ export function MealList(props){
     return null;
   });
  
- if(listMeal.every(filterArray)) {
-  listMealData = (<div>'No Data Found!!!'</div>);
- }else{
-  listMealData = listMeal;
- }
+  if(listMeal.every(filterArray)) {
+    listMealData = (<div className="nodatafound"><h1>No Data Found!!!</h1></div>);
+  }else{
+    listMealData = listMeal;
+  }
   
 
   return (

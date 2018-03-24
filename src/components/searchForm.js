@@ -19,11 +19,11 @@ export class SearchForm extends React.Component {
           return res.json();
         })
         .then(meals => {
-          console.log(meals)
+          //console.log(meals)
           this.props.dispatch(loadMealDataSuccess(meals)); 
         })
         .catch(err =>{ 
-          console.log(err)
+          //console.log(err)
           this.props.dispatch(loadMealDataFailure(err))
 
         });
@@ -31,15 +31,6 @@ export class SearchForm extends React.Component {
       
  
   render() {
-    // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-    //   <div>
-    //     <label>{label}</label>
-    //     <div>
-    //       <input {...input} type={type} placeholder={placeholder} className="input_length"/>
-    //       {touched && error && <span>{error}</span>}
-    //     </div>
-    //   </div>
-    // );
 
     return (
       

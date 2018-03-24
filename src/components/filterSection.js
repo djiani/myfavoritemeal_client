@@ -8,27 +8,27 @@ import './filterSection.css';
 export class FilterSection extends React.Component{
   handleCheckBox(title){
     if(title === 'lunch'){
-      console.log('dispatch lunch checked action');
+      //console.log('dispatch lunch checked action');
       this.props.dispatch(lunchchecked());
     }
     if(title === 'breakfast'){
-      console.log('dispatch breakfast checked action');
+     // console.log('dispatch breakfast checked action');
       this.props.dispatch(breakfastchecked());
     }
     if(title === 'dinner'){
-      console.log('dispatch dinner checked action');
+     // console.log('dispatch dinner checked action');
       this.props.dispatch(dinnerchecked());
     }
     if(title === 'easy'){
-      console.log('dispatch easy checked action');
+     // console.log('dispatch easy checked action');
       this.props.dispatch(easychecked());
     }
     if(title === 'intermediate'){
-      console.log('dispatch intermediate checked action');
+      //console.log('dispatch intermediate checked action');
       this.props.dispatch(intermedchecked());
     }
     if(title === 'difficult'){
-      console.log('dispatch difficult checked action');
+      //console.log('dispatch difficult checked action');
       this.props.dispatch(difficultchecked());
     }
     //

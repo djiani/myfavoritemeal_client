@@ -31,8 +31,8 @@ export class UpdateMealPage extends React.Component{
         return res.json();
       })
       .then(meal => {
-        console.log('current meal to be update!')
-        console.log(meal);
+        //console.log('current meal to be update!')
+        //console.log(meal);
         this.setState({
           meal: meal
         })

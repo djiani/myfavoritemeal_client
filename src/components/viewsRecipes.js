@@ -9,15 +9,13 @@ import {saveCurrentMealId} from '../actions/meal';
 export class ViewsRecipes extends React.Component{
   handleEditMeal(event){
     event.preventDefault();
-    console.log('checking edit props')
-    console.log(this.props.match.params.mealId);
     this.props.dispatch(saveCurrentMealId(this.props.match.params.mealId));
     this.props.history.push(`/update/${this.props.match.params.mealId}`)
   }
 
   handleDeleteMeal(event){
     event.preventDefault();
-    console.log(this.props.match.mealId)
+    //console.log(this.props.match.mealId)
     return fetch(`${API_BASE_URL}/meals/${this.props.match.params.mealId}`, {
     method: 'DELETE',
     headers: {
@@ -26,7 +24,6 @@ export class ViewsRecipes extends React.Component{
     
     })
     .then(res =>{
-      console.log(res);
       alert(`Meal id= ${this.props.match.params.mealId} has been successfully delete`);
       return this.props.history.push(`/home/${this.props.currentUser.username}` );
     })
@@ -44,8 +41,6 @@ export class ViewsRecipes extends React.Component{
      return  <Redirect to='/home'/>
     }
 
-  console.log('checking the props value'); 
-    console.log(this.props);
     let indexMeal = this.props.match.params.mealIndex;
     if(this.props.meals[indexMeal].username === this.props.currentUser.username){
       DisplayButton = (
@@ -58,12 +53,12 @@ export class ViewsRecipes extends React.Component{
       <li key={index}> {ingredient}</li>
     ))
 
-  const listDirections = this.props.meals[indexMeal].directions.map((direction, index) =>(
-      <li key={index}><span className="infoElt">STEP {index+1}:</span> {direction}</li>
-    ))
+    const listDirections = this.props.meals[indexMeal].directions.map((direction, index) =>(
+        <li key={index}><span className="infoElt">STEP {index+1}:</span> {direction}</li>
+      ))
     return(
       <div >
-      <h1> {this.props.meals[indexMeal].name}</h1>
+        <h1> {this.props.meals[indexMeal].name}</h1>
         <div className="recipes_section">
           <div className="recipes_block">
              <img src={this.props.meals[indexMeal].image_url} alt="test" className="recipes_img"/> 
@@ -98,9 +93,7 @@ export class ViewsRecipes extends React.Component{
            </ul>
           </div>
         </div> 
-      
       </div>
-      
     )
   }
 }

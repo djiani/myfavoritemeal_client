@@ -9,16 +9,10 @@ import {Grid, Row, Col} from 'react-bootstrap';
 //import AddMeal from './addMeal';
 export class DashBoard extends React.Component{ 
 
-  //sleep(ms){return new Promise(resolve => setTimeout(resolve, ms))}
-
   componentWillMount() {
-    console.log('loading data from db');
-    //reset ownership to false to load all meal
+    //console.log('loading data from db');
     this.props.dispatch(loadMealDataFetch());
-    //this.sleep(1000).then(()=> {
     this.props.dispatch(loadMealData());
-   // })
-
   }
   
   // handleOnClick(event){
@@ -81,15 +75,13 @@ export class DashBoard extends React.Component{
 
 
 const mapStateToProps = state => { 
-    return {
-        //indexMeal: state.meal.indexMeal, 
-        //viewsrecipes: state.meal.viewsrecipes,
-        loading: state.meal.loading,
-        error: state.meal.error,
-        meals: state.meal.meals,
-        del_success: state.user.delete_success,
-        del_error: state.user.delete_error
-    };
+  return {
+    loading: state.meal.loading,
+    error: state.meal.error,
+    meals: state.meal.meals,
+    del_success: state.user.delete_success,
+    del_error: state.user.delete_error
+  };
 };
 
 export default connect(mapStateToProps)(DashBoard);

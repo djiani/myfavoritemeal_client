@@ -14,24 +14,14 @@ export class RegistrationForm extends React.Component {
     onSubmit(values) {
         const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
-        console.log('checking onSubmit new user...')
-        console.log(user);
+        //console.log('checking onSubmit new user...')
+        //console.log(user);
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
     }
 
     render() {
-
-        // const renderField = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-        //   <div >
-        //     <label>{label} {touched && error && <span className="error">{error}</span>}</label>
-        //     <div>
-        //       <input {...input} type={type} placeholder={placeholder} className="input_length"/>
-              
-        //     </div>
-        //   </div>
-        // );
 
         return (
             <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values) )} >

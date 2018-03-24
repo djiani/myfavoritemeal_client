@@ -78,25 +78,13 @@ export class UpdateMealForm extends React.Component {
 
   handleCancel(event){
     event.preventDefault();
-    console.log('check history in handleCancel')
-    console.log(this.props.history)
+    ///console.log('check history in handleCancel')
+    //console.log(this.props.history)
     this.props.history.push('/home')
     //return <Redirect to="/home" />
   }
 
   render(){ 
-    // const RenderField2 = ({ input, label, type, placeholder, value, meta: { touched, error } }) => (
-    //   <div >
-    //     <label>{label}</label>
-    //     <div>
-    //       <input {...input} type={type} placeholder={placeholder} ref={input => (this.input = input)} className="input_length"/>
-    //       {touched && error && <span>{error}</span>}
-    //     </div>
-    //   </div>
-    // );
-    console.log('check history in updatefrom')
-    console.log(this.props.history)
-
     let ImgPreview;
     if(this.state.file_url){
       ImgPreview = (

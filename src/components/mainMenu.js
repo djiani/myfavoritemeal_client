@@ -15,15 +15,15 @@ export class MainMenu extends React.Component{
 
 //logout and redirect to home page;
   handleOnSelectRight(eventKey){
-    console.log(eventKey)
+    //console.log(eventKey)
     if(eventKey === 3.2){
       this.props.props.dispatch(clearAuth());
       clearAuthToken();
       this.props.props.history.push('/');
     }
     if(eventKey === 3.3){
-      console.log('checking user_id...');
-      console.log(this.props.props.currentUser.id);
+     //console.log('checking user_id...');
+     // console.log(this.props.props.currentUser.id);
       //this.props.props.dispatch(deleteUserAccount(this.props.props.currentUser.id))
      
       return fetch(`${API_BASE_URL}/users/${this.props.props.currentUser.id}`, {

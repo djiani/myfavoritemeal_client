@@ -8,8 +8,8 @@ import DescriptionSection from './descriptionSection';
 import FooterSection from './footerSection';
 
 export function LandingPage(props) {
-  console.log('check props loggedIn')
-  console.log(props.loggedIn);
+  //console.log('check props loggedIn')
+  //console.log(props.loggedIn);
   if (props.loggedIn){
      return <Redirect to ="/home" />
   }

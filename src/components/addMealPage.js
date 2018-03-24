@@ -10,7 +10,7 @@ import './addMealPage.css';
 export class AddMealPage extends React.Component{
   
   showResults(values){
-    console.log(values);
+    //console.log(values);
     if(this.props.currentUser ){
       values.owner.username = this.props.currentUser.username;
     }else{

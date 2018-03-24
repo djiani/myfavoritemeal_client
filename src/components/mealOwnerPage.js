@@ -17,30 +17,7 @@ export class MealOwnerPage extends React.Component{
       //this.props.dispatch(checkOwnerMeal(false));
       this.props.dispatch(loadMealDataOwner(this.props.match.params.username));
     //})
-      
-
   }
-  
-  // loadMealData(){
-  //   console.log(this.props.match.params);
-  //   return fetch(`${API_BASE_URL}/meals/mymeal/${this.props.match.params.username}`)
-  //       .then(res =>{
-  //         if(!res.ok){
-  //           return Promise.reject(res.statusText);
-  //         }
-  //        // console.log(res.json())
-  //         return res.json();
-  //       })
-  //       .then(meals => {
-  //         console.log(meals)
-  //         this.props.dispatch(loadMealDataSuccess(meals)); 
-  //       })
-  //       .catch(err =>{ 
-  //         console.log(err)
-  //         this.props.dispatch(loadMealDataFailure(err))
-
-  //       });
-  //   }
 
   render(){ 
     let body;

@@ -26,9 +26,6 @@ export class AddMealForm extends React.Component {
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
     formData.append('filename', event.target.files[0].name )
-    for(var value of formData.values() ){
-      console.log(value);
-    }
     
     axios.post(`${API_BASE_URL}/upload`, formData, {
       headers: {
@@ -37,7 +34,7 @@ export class AddMealForm extends React.Component {
       
     }).then(response => {
       // handle your response;
-      console.log(response);
+      //console.log(response);
       this.setState({
         file_url : response.data.location,
         loading: false});
@@ -72,7 +69,7 @@ export class AddMealForm extends React.Component {
 
   onSubmit(values){
     if(this.state.loading){
-      alert("Please, wait the the image to load!!!!");
+      alert("Please wait! the image is loading...");
     }else {
       if(!this.state.file_url){
         values.image_url = ''
@@ -86,7 +83,7 @@ export class AddMealForm extends React.Component {
         values.directions = []
       }
     
-    console.log(values);
+    //console.log(values);
     this.props.onSubmit(values);
     }
     

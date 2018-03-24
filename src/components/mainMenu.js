@@ -7,7 +7,8 @@ import {Navbar, NavItem, NavDropdown, Nav, MenuItem} from 'react-bootstrap';
 import {clearAuthToken} from '../local-storage';
 import {clearAuth} from '../actions/auth';
 import {API_BASE_URL} from '../config';
-import './meal.css';
+//import './meal.css';
+import './mainMenu.css';
 
 
 export class MainMenu extends React.Component{

@@ -56,12 +56,18 @@ export class ViewsRecipes extends React.Component{
     const listDirections = this.props.meals[indexMeal].directions.map((direction, index) =>(
         <li key={index}><span className="infoElt">STEP {index+1}:</span> {direction}</li>
       ))
+
+    let url_img = this.props.meals[indexMeal].image_url;
+    if(!url_img){
+      url_img = 'https://s3.us-east-2.amazonaws.com/myfavoritemealaws/products/healthy.jpg';
+    }
+    
     return(
       <div >
         <h1> {this.props.meals[indexMeal].name}</h1>
         <div className="recipes_section">
           <div className="recipes_block">
-             <img src={this.props.meals[indexMeal].image_url} alt="test" className="recipes_img"/> 
+             <img src={url_img} alt="test" className="recipes_img"/> 
           </div>
           <div  className="recipes_block">
           <h3> Description </h3>

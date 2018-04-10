@@ -8,7 +8,8 @@ export class Meal extends React.Component{
 
   render(){
     let url_img = this.props.meal.image_url;
-    if(!url_img){
+    console.log(url_img);
+    if(url_img === ''){
       url_img = 'https://s3.us-east-2.amazonaws.com/myfavoritemealaws/products/healthy.jpg';
     }
     return (

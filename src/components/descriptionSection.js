@@ -10,14 +10,14 @@ export default function DescriptionSection(props){
         </div>
         <div className="well well-lg text_block">
           <p> MyFavoriteMeal is a social platform where users can share their food habits and preferences. 
-            This web platform is developed principally 
-            to inspire and to teach culinary novices and promote the food out there. 
-            With the recipes and directions provided, anyone can trying by himself to make something new, 
-            quick and fast at his own space and time.
+          his web platform is developed principally to inspire and to teach culinary novices and promote the 
+          ood out there. With the recipes and directions provided, anyone can try to make something new, 
+          quick, and fast at their own pace.
           </p>
           <q>If you really want to make a friend, go to someone's house and eat with him.
-           The people who give you their food give you their heart - Cesar Chavez
+           The people who give you their food give you their heart 
           </q>
+           Cesar Chavez
         </div>
         <div className="header_block">
           <h2 className="text_effect">Enjoy your Meal!!</h2>

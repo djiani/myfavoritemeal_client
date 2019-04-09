@@ -14,7 +14,7 @@
     "react-router-dom": "^4.2.2",
     "react-s3-upload": "^0.1.6",
     "react-s3-uploader": "^4.7.0",
-    "react-scripts": "^1.1.1",
+    "react-scripts": "^2.1.8",
     "redux": "^3.7.2",
     "redux-form": "^7.2.3",
     "redux-thunk": "^2.2.0"
@@ -26,8 +26,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "react-test-renderer": "^16.2.0"
   }
 }

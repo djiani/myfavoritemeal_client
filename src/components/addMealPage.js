@@ -17,7 +17,7 @@ export class AddMealPage extends React.Component{
 
   render(){
     return (
-        <div className='meal_form_block'>
+        <div className='page_styling'>
           <AddMealForm onSubmit={values => this.showResults(values)} />
         </div>
     )

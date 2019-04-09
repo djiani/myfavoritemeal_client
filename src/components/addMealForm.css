@@ -13,8 +13,11 @@ ul{
 }
 .radio_block{
   border: 1px solid black;
+  background-color: white;
   height: 50px;
   margin: 0 auto;
+  vertical-align: center;
+  padding-top: 10px;
 }
 
 
@@ -41,22 +44,58 @@ ul{
 }
 
 .input_length{
+  border-top: none;
   width: 60%;
   height: 50px;
+  margin-bottom: 10px;
 }
 
-.input_length_ing1{
+.input_length_21{
   width: 85%;
   height: 50px;
 }
-.input_length_ing2{
+.input_length_remove_btn{
   width: 10%;
   height: 50px;
   vertical-align: center;
   float: right;
   margin-right: 5px;
+  border-radius: 5px;
+  background-color: #0247FE;
+  color: white;
 }
 
+.submit_button2{
+  display: inline-block;
+  background-color: #0247FE;
+  color: white;
+  width: 28%;
+  height: 50px;
+  margin: 2%;
+  border-radius: 10px;
+}
+.cancel_button2{
+  display: inline-block;
+  background-color: #091534 ;
+  color: white;
+  width: 28%;
+  height: 50px;
+  margin: 2%;
+  border-radius: 10px;
+}
+.submit_button{
+  width: 60%;
+  height: 60px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: #0247FE;
+  color:white;
+  border-radius: 10px;
+}
+
+.error{
+  color: red;
+}
 
 
 

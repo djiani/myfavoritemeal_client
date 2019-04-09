@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import RegistrationForm from './registration_form';
+import './registration_page.css';
 
 export function RegistrationPage(props){
   if(props.loggedIn){
@@ -9,10 +10,12 @@ export function RegistrationPage(props){
   }
 
   return (
-    <div className="registration_page"> 
-    <h2> Fill the information below </h2>
+    <div className="page_styling"> 
+    <h2 className="text_effect"> Fill the information below </h2>
       <RegistrationForm />
-      <Link to="/login">Login</Link>
+      <div>
+        Have an already? <Link to="/login"><span className= "link_red">Login</span></Link>
+      </div>
     </div>
   )
 }

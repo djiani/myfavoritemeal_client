@@ -20,15 +20,21 @@ export class Meal extends React.Component{
         
         <div>
           <h4 className="meal_name"> {this.props.meal.name} </h4>
-          <ul>
-            <li> Difficulty: {this.props.meal.difficulty}</li>
-            <li> Time: {this.props.meal.hands_on} minutes</li>
-            <li> posted by: {this.props.meal.owner}</li>
+          <ul className="well2">
+            <li> Difficulty: <span className="text_bold">{this.props.meal.difficulty}</span></li>
+            <li> Time: <span className="text_bold">{this.props.meal.hands_on} minutes </span></li>
+            <li> posted by:<span className="text_bold"> {this.props.meal.owner}</span></li>
 
           </ul>
         </div>
         <div>
-          {/*<a href={`#:${this.props.indexMeal}`} >*/}
+          {/*<a href={`#:${this.props.indexMeal}`} >
+          
+           <a  className="like_btn"> 
+           <h2><span class="glyphicon glyphicon-heart-empty "></span></h2>
+           <h2><span class="glyphicon glyphicon-heart"></span></h2>
+
+           </a>*/}
             <button className="recipes_btn" onClick={()=>this.handleViewsRecipes(this.props.indexMeal, 'viewsrecipes')} > view recipes</button>
           
         </div>
